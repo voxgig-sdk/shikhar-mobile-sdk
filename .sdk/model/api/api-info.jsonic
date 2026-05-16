@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://shikhar.hulcd.com/login"
+      }
+      description: "This API enables users to interact with the Shikhar mobile application, allowing actions such as user login, mobile number verification, and other app-related functionalities. It's designed to facilitate seamless communication between the mobile client and the server."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://shikhar.hulcd.com"
+        }
+      ]
+      title: "Shikhar Mobile API"
+      version: "12.8v14"
+    }
+  }
+}
+
+}

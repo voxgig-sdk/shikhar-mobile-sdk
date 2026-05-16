@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "authentication": {
+      "AUTHENTICATION00": {
+        "message": "s46",
+        "mobile": "s47",
+        "password": "s48",
+        "success": false,
+        "token": "s4a",
+        "user": {},
+        "verification_id": "VERIFICATION01"
+      },
+      "AUTHENTICATION01": {
+        "message": "s8c",
+        "mobile": "s8d",
+        "password": "s8e",
+        "success": false,
+        "token": "s90",
+        "user": {},
+        "verification_id": "VERIFICATION01"
+      },
+      "AUTHENTICATION02": {
+        "message": "sd2",
+        "mobile": "sd3",
+        "password": "sd4",
+        "success": false,
+        "token": "sd6",
+        "user": {},
+        "verification_id": "VERIFICATION01"
+      }
+    }
+  },
+  "new": {
+    "authentication": {
+      "authentication_ref01": {
+        "message": "s118",
+        "mobile": "s119",
+        "password": "s11a",
+        "success": false,
+        "token": "s11c",
+        "user": {},
+        "verification_id": "VERIFICATION01"
+      }
+    }
+  }
+}
