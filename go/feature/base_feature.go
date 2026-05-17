@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/shikhar-mobile-sdk/core"
+	"github.com/voxgig-sdk/shikhar-mobile-sdk/go/core"
 )
 
 type BaseFeature struct {

@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/shikhar-mobile-sdk"
-	"github.com/voxgig-sdk/shikhar-mobile-sdk/core"
+	sdk "github.com/voxgig-sdk/shikhar-mobile-sdk/go"
+	"github.com/voxgig-sdk/shikhar-mobile-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/shikhar-mobile-sdk/go/utility/struct"
 )
 
 func TestAuthenticationEntity(t *testing.T) {

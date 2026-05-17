@@ -1,10 +1,10 @@
 package voxgigshikharmobilesdk
 
 import (
-	"github.com/voxgig-sdk/shikhar-mobile-sdk/core"
-	"github.com/voxgig-sdk/shikhar-mobile-sdk/entity"
-	"github.com/voxgig-sdk/shikhar-mobile-sdk/feature"
-	_ "github.com/voxgig-sdk/shikhar-mobile-sdk/utility"
+	"github.com/voxgig-sdk/shikhar-mobile-sdk/go/core"
+	"github.com/voxgig-sdk/shikhar-mobile-sdk/go/entity"
+	"github.com/voxgig-sdk/shikhar-mobile-sdk/go/feature"
+	_ "github.com/voxgig-sdk/shikhar-mobile-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/shikhar-mobile-sdk/core"
+	"github.com/voxgig-sdk/shikhar-mobile-sdk/go/core"
 )
 
 type LogFeature struct {
