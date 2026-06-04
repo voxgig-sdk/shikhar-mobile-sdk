@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'SHIKHAR_MOBILE_TEST_AUTHENTICATION_ENTID': idmap,
     'SHIKHAR_MOBILE_TEST_LIVE': 'FALSE',
     'SHIKHAR_MOBILE_TEST_EXPLAIN': 'FALSE',
-    'SHIKHAR_MOBILE_APIKEY': 'NONE',
   })
 
   idmap = env['SHIKHAR_MOBILE_TEST_AUTHENTICATION_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ShikharMobileSDK(merge([
       {
-        apikey: env.SHIKHAR_MOBILE_APIKEY,
       },
       extra
     ]))

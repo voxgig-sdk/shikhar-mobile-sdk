@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://shikhar.hulcd.com',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

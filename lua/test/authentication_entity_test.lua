@@ -86,7 +86,6 @@ function authentication_basic_setup(extra)
     ["SHIKHARMOBILE_TEST_AUTHENTICATION_ENTID"] = idmap,
     ["SHIKHARMOBILE_TEST_LIVE"] = "FALSE",
     ["SHIKHARMOBILE_TEST_EXPLAIN"] = "FALSE",
-    ["SHIKHARMOBILE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -98,7 +97,6 @@ function authentication_basic_setup(extra)
   if env["SHIKHARMOBILE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["SHIKHARMOBILE_APIKEY"],
       },
       extra or {},
     })

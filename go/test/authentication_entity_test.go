@@ -110,7 +110,6 @@ func authenticationBasicSetup(extra map[string]any) *entityTestSetup {
 		"SHIKHARMOBILE_TEST_AUTHENTICATION_ENTID": idmap,
 		"SHIKHARMOBILE_TEST_LIVE":      "FALSE",
 		"SHIKHARMOBILE_TEST_EXPLAIN":   "FALSE",
-		"SHIKHARMOBILE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["SHIKHARMOBILE_TEST_AUTHENTICATION_ENTID"])
@@ -121,7 +120,6 @@ func authenticationBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["SHIKHARMOBILE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["SHIKHARMOBILE_APIKEY"],
 			},
 			extra,
 		})

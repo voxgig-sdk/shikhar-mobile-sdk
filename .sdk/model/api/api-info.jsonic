@@ -16,8 +16,22 @@ main: {
       ]
       title: "Shikhar Mobile API"
       version: "12.8v14"
+      tagline: "Authenticate users and verify mobile numbers for the Shikhar mobile app"
+      homepage: "https://shikhar.hulcd.com"
+      docs_url: "https://freepublicapis.com/shikhar-mobile-api"
+      about_md: `The Shikhar Mobile API powers the back-end interactions for the Shikhar mobile application, hosted at [shikhar.hulcd.com](https://shikhar.hulcd.com). It handles the account-side flows the app needs to onboard and identify users.
+
+The documented surface area focuses on authentication tasks:
+
+- User login
+- Mobile number verification
+- Related app-side identity actions
+
+Further endpoint details, authentication schemes, and licence terms are not published on the public catalogue page; consult the upstream service if you need contractual guarantees or production access.`
+      entity_desc: {
+        authentication: "Operations for logging users in and verifying their mobile numbers against the Shikhar app's account system."
+      }
+      auth: false
     }
   }
-}
-
 }
