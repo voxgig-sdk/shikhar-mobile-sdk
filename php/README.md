@@ -10,7 +10,7 @@ The PHP SDK for the ShikharMobile API — an entity-oriented client using PHP co
 
 ## Install
 ```bash
-composer require voxgig/shikhar-mobile-sdk
+composer require voxgig-sdk/shikhar-mobile
 ```
 
 

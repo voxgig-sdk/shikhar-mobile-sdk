@@ -10,7 +10,7 @@ The Lua SDK for the ShikharMobile API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install shikhar-mobile-sdk
+luarocks install voxgig-sdk-shikhar-mobile
 ```
 
 If the module is not yet published, add the source directory to

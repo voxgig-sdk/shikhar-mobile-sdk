@@ -10,7 +10,7 @@ The Python SDK for the ShikharMobile API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install shikhar-mobile-sdk
+pip install voxgig-sdk-shikhar-mobile
 ```
 
 Or install from source:

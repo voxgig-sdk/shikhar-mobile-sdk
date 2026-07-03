@@ -8,12 +8,14 @@ source = {
   dir = "shikhar-mobile-sdk/lua"
 }
 description = {
-  summary = "ShikharMobile SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Shikhar Mobile public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/shikhar-mobile-sdk",
+  issues_url = "https://github.com/voxgig-sdk/shikhar-mobile-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "shikhar-mobile" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

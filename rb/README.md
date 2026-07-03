@@ -10,13 +10,13 @@ The Ruby SDK for the ShikharMobile API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install shikhar-mobile-sdk
+gem install voxgig-sdk-shikhar-mobile
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "shikhar-mobile-sdk"
+gem "voxgig-sdk-shikhar-mobile"
 ```
 
 Then run:

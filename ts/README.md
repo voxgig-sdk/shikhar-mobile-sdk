@@ -10,7 +10,7 @@ The TypeScript SDK for the ShikharMobile API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install shikhar-mobile
+npm install @voxgig-sdk/shikhar-mobile
 ```
 ## Tutorial: your first API call
 
