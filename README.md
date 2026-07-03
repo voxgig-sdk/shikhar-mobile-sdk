@@ -1,20 +1,8 @@
 # ShikharMobile SDK
 
-Authenticate users and verify mobile numbers for the Shikhar mobile app
+Shikhar Mobile API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Shikhar Mobile API
-
-The Shikhar Mobile API powers the back-end interactions for the Shikhar mobile application, hosted at [shikhar.hulcd.com](https://shikhar.hulcd.com). It handles the account-side flows the app needs to onboard and identify users.
-
-The documented surface area focuses on authentication tasks:
-
-- User login
-- Mobile number verification
-- Related app-side identity actions
-
-Further endpoint details, authentication schemes, and licence terms are not published on the public catalogue page; consult the upstream service if you need contractual guarantees or production access.
 
 ## Try it
 
@@ -48,27 +36,28 @@ gem install shikhar-mobile-sdk
 luarocks install shikhar-mobile-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ShikharMobileSDK } from 'shikhar-mobile'
 
-const client = new ShikharMobileSDK({})
+const client = new ShikharMobileSDK({
+  apikey: process.env.SHIKHAR-MOBILE_APIKEY,
+})
 
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +87,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Authentication** | Operations for logging users in and verifying their mobile numbers against the Shikhar app's account system. | `/api/auth/login` |
+| **Authentication** |  | `/api/auth/login` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,9 +97,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from shikharmobile_sdk import ShikharMobileSDK
 
-client = ShikharMobileSDK({})
+client = ShikharMobileSDK({
+    "apikey": os.environ.get("SHIKHAR-MOBILE_APIKEY"),
+})
 
 ```
 
@@ -120,7 +112,9 @@ client = ShikharMobileSDK({})
 <?php
 require_once 'shikharmobile_sdk.php';
 
-$client = new ShikharMobileSDK([]);
+$client = new ShikharMobileSDK([
+    "apikey" => getenv("SHIKHAR-MOBILE_APIKEY"),
+]);
 
 ```
 
@@ -129,7 +123,9 @@ $client = new ShikharMobileSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/shikhar-mobile-sdk/go"
 
-client := sdk.NewShikharMobileSDK(map[string]any{})
+client := sdk.NewShikharMobileSDK(map[string]any{
+    "apikey": os.Getenv("SHIKHAR-MOBILE_APIKEY"),
+})
 
 ```
 
@@ -138,7 +134,9 @@ client := sdk.NewShikharMobileSDK(map[string]any{})
 ```ruby
 require_relative "ShikharMobile_sdk"
 
-client = ShikharMobileSDK.new({})
+client = ShikharMobileSDK.new({
+  "apikey" => ENV["SHIKHAR-MOBILE_APIKEY"],
+})
 
 ```
 
@@ -147,7 +145,9 @@ client = ShikharMobileSDK.new({})
 ```lua
 local sdk = require("shikhar-mobile_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("SHIKHAR-MOBILE_APIKEY"),
+})
 
 ```
 
@@ -167,25 +167,21 @@ const result = await client.Authentication().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ShikharMobileSDK.test(None, None)
-result, err = client.Authentication(None).load(
-    {"id": "test01"}, None
-)
+client = ShikharMobileSDK.test()
+result, err = client.Authentication().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ShikharMobileSDK::test(null, null);
-[$result, $err] = $client->Authentication(null)->load(
-    ["id" => "test01"], null
-);
+$client = ShikharMobileSDK::test();
+[$result, $err] = $client->Authentication()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Authentication(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -194,19 +190,15 @@ result, err := client.Authentication(nil).Load(
 ### Ruby
 
 ```ruby
-client = ShikharMobileSDK.test(nil, nil)
-result, err = client.Authentication(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ShikharMobileSDK.test
+result, err = client.Authentication().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Authentication(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Authentication():load({ id = "test01" })
 ```
 
 ## How it works
@@ -310,11 +302,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Shikhar Mobile API
-
-- Upstream: [https://shikhar.hulcd.com](https://shikhar.hulcd.com)
-- API docs: [https://freepublicapis.com/shikhar-mobile-api](https://freepublicapis.com/shikhar-mobile-api)
 
 ---
 

@@ -1,6 +1,11 @@
 # ShikharMobile Ruby SDK
 
-The Ruby SDK for the ShikharMobile API. Provides an entity-oriented interface using idiomatic Ruby conventions.
+
+
+The Ruby SDK for the ShikharMobile API — an entity-oriented client using idiomatic Ruby conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -31,14 +36,16 @@ loading a specific record.
 ```ruby
 require_relative "ShikharMobile_sdk"
 
-client = ShikharMobileSDK.new({})
+client = ShikharMobileSDK.new({
+  "apikey" => ENV["SHIKHAR-MOBILE_APIKEY"],
+})
 ```
 
 ### 4. Create, update, and remove
 
 ```ruby
 # Create
-created, _ = client.Authentication(nil).create({ "name" => "Example" }, nil)
+created, _ = client.Authentication().create({ "name" => "Example" })
 
 ```
 
@@ -83,11 +90,9 @@ puts fetchdef["headers"]
 Create a mock client for unit testing — no server required:
 
 ```ruby
-client = ShikharMobileSDK.test(nil, nil)
+client = ShikharMobileSDK.test
 
-result, err = client.ShikharMobile(nil).load(
-  { "id" => "test01" }, nil
-)
+result, err = client.ShikharMobile().load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -119,6 +124,7 @@ Create a `.env.local` file at the project root:
 
 ```
 SHIKHAR-MOBILE_TEST_LIVE=TRUE
+SHIKHAR-MOBILE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -141,6 +147,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

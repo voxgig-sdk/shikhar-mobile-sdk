@@ -1,6 +1,11 @@
 # ShikharMobile PHP SDK
 
-The PHP SDK for the ShikharMobile API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the ShikharMobile API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,14 +25,16 @@ loading a specific record.
 <?php
 require_once 'shikharmobile_sdk.php';
 
-$client = new ShikharMobileSDK([]);
+$client = new ShikharMobileSDK([
+    "apikey" => getenv("SHIKHAR-MOBILE_APIKEY"),
+]);
 ```
 
 ### 4. Create, update, and remove
 
 ```php
 // Create
-[$created, $_] = $client->Authentication(null)->create(["name" => "Example"], null);
+[$created, $_] = $client->Authentication()->create(["name" => "Example"]);
 
 ```
 
@@ -72,11 +79,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = ShikharMobileSDK::test(null, null);
+$client = ShikharMobileSDK::test();
 
-[$result, $err] = $client->ShikharMobile(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->ShikharMobile()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -111,6 +116,7 @@ Create a `.env.local` file at the project root:
 
 ```
 SHIKHAR-MOBILE_TEST_LIVE=TRUE
+SHIKHAR-MOBILE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -133,6 +139,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
