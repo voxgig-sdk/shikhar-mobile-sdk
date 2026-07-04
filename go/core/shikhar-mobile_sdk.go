@@ -245,6 +245,9 @@ func (sdk *ShikharMobileSDK) Direct(fetchargs map[string]any) (map[string]any, e
 }
 
 
+// Authentication returns a Authentication entity bound to this client.
+// Idiomatic usage: client.Authentication(nil).List(nil, nil) or
+// client.Authentication(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ShikharMobileSDK) Authentication(data map[string]any) ShikharMobileEntity {
 	return NewAuthenticationEntityFunc(sdk, data)
 }

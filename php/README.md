@@ -9,9 +9,10 @@ The PHP SDK for the ShikharMobile API — an entity-oriented client using PHP co
 
 
 ## Install
-```bash
-composer require voxgig-sdk/shikhar-mobile
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -26,7 +27,7 @@ loading a specific record.
 require_once 'shikharmobile_sdk.php';
 
 $client = new ShikharMobileSDK([
-    "apikey" => getenv("SHIKHAR-MOBILE_APIKEY"),
+    "apikey" => getenv("SHIKHAR_MOBILE_APIKEY"),
 ]);
 ```
 
@@ -34,7 +35,7 @@ $client = new ShikharMobileSDK([
 
 ```php
 // Create
-[$created, $_] = $client->Authentication()->create(["name" => "Example"]);
+$created = $client->authentication()->create(["name" => "Example"]);
 
 ```
 
@@ -46,28 +47,31 @@ $client = new ShikharMobileSDK([
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +85,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ShikharMobileSDK::test();
 
-[$result, $err] = $client->ShikharMobile()->load(["id" => "test01"]);
+$result = $client->authentication()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -115,8 +119,8 @@ $client = new ShikharMobileSDK([
 Create a `.env.local` file at the project root:
 
 ```
-SHIKHAR-MOBILE_TEST_LIVE=TRUE
-SHIKHAR-MOBILE_APIKEY=<your-key>
+SHIKHAR_MOBILE_TEST_LIVE=TRUE
+SHIKHAR_MOBILE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -185,8 +189,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -222,7 +230,7 @@ API path: `/api/auth/login`
 
 ### Authentication
 
-Create an instance: `const authentication = client.Authentication()`
+Create an instance: `const authentication = client.authentication`
 
 #### Operations
 
@@ -245,7 +253,7 @@ Create an instance: `const authentication = client.Authentication()`
 #### Example: Create
 
 ```ts
-const authentication = await client.Authentication().create({
+const authentication = await client.authentication.create({
   mobile: /* `$STRING` */,
   password: /* `$STRING` */,
 })
@@ -323,11 +331,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$authentication = $client->authentication();
+$authentication->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $authentication->dataGet() now returns the loaded authentication data
+// $authentication->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

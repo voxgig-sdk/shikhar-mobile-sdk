@@ -2,6 +2,8 @@
 
 import { AuthenticationEntity } from './entity/AuthenticationEntity'
 
+export type * from './ShikharMobileTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class ShikharMobileSDK {
 
 
 
+  _authentication?: AuthenticationEntity
+
+  // Idiomatic facade: `client.authentication.list()` / `client.authentication.load({ id })`.
+  get authentication(): AuthenticationEntity {
+    return (this._authentication ??= new AuthenticationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.authentication` instead. */
   Authentication(data?: any) {
     const self = this
     return new AuthenticationEntity(self,data)

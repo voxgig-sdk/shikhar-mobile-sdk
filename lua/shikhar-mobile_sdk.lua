@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:authentication():list() / client:authentication():load({ id = ... })
+function ShikharMobileSDK:authentication(data)
+  local EntityMod = require("entity.authentication_entity")
+  if data == nil then
+    if self._authentication == nil then
+      self._authentication = EntityMod.new(self, nil)
+    end
+    return self._authentication
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:authentication() instead.
 function ShikharMobileSDK:Authentication(data)
   local EntityMod = require("entity.authentication_entity")
   return EntityMod.new(self, data)

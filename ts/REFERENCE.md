@@ -110,7 +110,7 @@ Alias for `ShikharMobileSDK.test()`.
 ## AuthenticationEntity
 
 ```ts
-const authentication = client.Authentication()
+const authentication = client.authentication
 ```
 
 ### Fields
@@ -132,7 +132,7 @@ const authentication = client.Authentication()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.Authentication().create({
+const result = await client.authentication.create({
   mobile: /* `$STRING` */,
   password: /* `$STRING` */,
 })
