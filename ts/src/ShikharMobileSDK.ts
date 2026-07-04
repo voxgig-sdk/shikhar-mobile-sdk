@@ -204,14 +204,7 @@ class ShikharMobileSDK {
 
 
 
-  _authentication?: AuthenticationEntity
-
-  // Idiomatic facade: `client.authentication.list()` / `client.authentication.load({ id })`.
-  get authentication(): AuthenticationEntity {
-    return (this._authentication ??= new AuthenticationEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.authentication` instead. */
+  // Entity access: `client.Authentication().list()` / `client.Authentication().load({ id })`.
   Authentication(data?: any) {
     const self = this
     return new AuthenticationEntity(self,data)

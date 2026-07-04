@@ -81,7 +81,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AuthenticationEntity
 
 ```python
-authentication = client.authentication
+authentication = client.Authentication()
 ```
 
 ### Fields
@@ -103,9 +103,9 @@ authentication = client.authentication
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.authentication.create({
-    "mobile": # `$STRING`,
-    "password": # `$STRING`,
+result = client.Authentication().create({
+    "mobile": ...,  # `$STRING`
+    "password": ...,  # `$STRING`
 })
 ```
 

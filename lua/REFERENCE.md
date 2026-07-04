@@ -84,7 +84,7 @@ same parameters as `direct()`.
 ## AuthenticationEntity
 
 ```lua
-local authentication = client:authentication(nil)
+local authentication = client:Authentication(nil)
 ```
 
 ### Fields
@@ -106,7 +106,7 @@ local authentication = client:authentication(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:authentication():create({
+local result, err = client:Authentication():create({
   mobile = --[[ `$STRING` ]],
   password = --[[ `$STRING` ]],
 })

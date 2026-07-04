@@ -37,8 +37,8 @@ client = ShikharMobileSDK({
 ### 4. Create, update, and remove
 
 ```python
-# Create
-created = client.authentication.create({"name": "Example"})
+# Create — returns the bare created record (a dict)
+created = client.Authentication().create({"name": "Example"})
 
 ```
 
@@ -85,8 +85,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ShikharMobileSDK.test()
 
-result = client.authentication.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+authentication = client.Authentication().load({"id": "test01"})
+# authentication contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -164,7 +165,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Authentication` | `(data) -> AuthenticationEntity` | Create a Authentication entity instance. |
+| `Authentication` | `(data) -> AuthenticationEntity` | Create an Authentication entity instance. |
 
 ### Entity interface
 
@@ -227,7 +228,7 @@ API path: `/api/auth/login`
 
 ### Authentication
 
-Create an instance: `const authentication = client.authentication`
+Create an instance: `authentication = client.Authentication()`
 
 #### Operations
 
@@ -249,10 +250,10 @@ Create an instance: `const authentication = client.authentication`
 
 #### Example: Create
 
-```ts
-const authentication = await client.authentication.create({
-  mobile: /* `$STRING` */,
-  password: /* `$STRING` */,
+```python
+authentication = client.Authentication().create({
+    "mobile": ...,  # `$STRING`
+    "password": ...,  # `$STRING`
 })
 ```
 
@@ -327,7 +328,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-authentication = client.authentication
+authentication = client.Authentication()
 authentication.load({"id": "example_id"})
 
 # authentication.data_get() now returns the loaded authentication data

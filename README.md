@@ -141,22 +141,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ShikharMobileSDK.test()
-const result = await client.authentication.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const authentication = await client.Authentication().load({ id: 'test01' })
+// authentication is a bare Authentication populated with mock data
+console.log(authentication)
 ```
 
 ### Python
 
 ```python
 client = ShikharMobileSDK.test()
-result = client.authentication.load({"id": "test01"})
+authentication = client.Authentication().load({"id": "test01"})
+print(authentication)
 ```
 
 ### PHP
 
 ```php
-$client = ShikharMobileSDK::test();
-$result = $client->authentication()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ShikharMobileSDK::test([
+    "entity" => ["authentication" => ["test01" => ["id" => "test01"]]],
+]);
+$authentication = $client->Authentication()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -171,15 +176,18 @@ result, err := client.Authentication(nil).Load(
 ### Ruby
 
 ```ruby
-client = ShikharMobileSDK.test
-result = client.authentication.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ShikharMobileSDK.test({
+  "entity" => { "authentication" => { "test01" => { "id" => "test01" } } },
+})
+authentication = client.Authentication.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:authentication():load({ id = "test01" })
+local result, err = client:Authentication():load({ id = "test01" })
 ```
 
 ## How it works
@@ -227,6 +235,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

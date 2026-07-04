@@ -233,10 +233,10 @@ class ShikharMobileSDK
 
     private $_authentication = null;
 
-    // Idiomatic facade: $client->authentication()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Authentication() (PHP method
-    // names are case-insensitive).
-    public function authentication($data = null)
+    // Canonical facade: $client->Authentication()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->authentication()
+    // resolves here too.
+    public function Authentication($data = null)
     {
         require_once __DIR__ . '/entity/authentication_entity.php';
         if ($data === null) {

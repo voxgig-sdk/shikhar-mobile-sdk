@@ -33,8 +33,8 @@ client = ShikharMobileSDK.new({
 ### 4. Create, update, and remove
 
 ```ruby
-# Create
-created = client.authentication.create({ "name" => "Example" })
+# create returns the bare created Authentication record.
+created = client.Authentication.create({ "name" => "Example" })
 
 ```
 
@@ -79,13 +79,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ShikharMobileSDK.test
+client = ShikharMobileSDK.test({
+  "entity" => { "authentication" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.authentication.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+authentication = client.Authentication.load({ "id" => "test01" })
+puts authentication
 ```
 
 ### Use a custom fetch function
@@ -163,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Authentication` | `(data) -> AuthenticationEntity` | Create a Authentication entity instance. |
+| `Authentication` | `(data) -> AuthenticationEntity` | Create an Authentication entity instance. |
 
 ### Entity interface
 
@@ -225,7 +229,7 @@ API path: `/api/auth/login`
 
 ### Authentication
 
-Create an instance: `const authentication = client.authentication`
+Create an instance: `authentication = client.Authentication`
 
 #### Operations
 
@@ -247,10 +251,10 @@ Create an instance: `const authentication = client.authentication`
 
 #### Example: Create
 
-```ts
-const authentication = await client.authentication.create({
-  mobile: /* `$STRING` */,
-  password: /* `$STRING` */,
+```ruby
+authentication = client.Authentication.create({
+  "mobile" => nil, # `$STRING`
+  "password" => nil, # `$STRING`
 })
 ```
 
@@ -326,7 +330,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-authentication = client.authentication
+authentication = client.Authentication
 authentication.load({ "id" => "example_id" })
 
 # authentication.data_get now returns the loaded authentication data

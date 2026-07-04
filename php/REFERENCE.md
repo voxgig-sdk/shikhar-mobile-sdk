@@ -86,7 +86,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AuthenticationEntity
 
 ```php
-$authentication = $client->authentication();
+$authentication = $client->Authentication();
 ```
 
 ### Fields
@@ -108,7 +108,7 @@ $authentication = $client->authentication();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->authentication()->create([
+$result = $client->Authentication()->create([
   "mobile" => /* `$STRING` */,
   "password" => /* `$STRING` */,
 ]);

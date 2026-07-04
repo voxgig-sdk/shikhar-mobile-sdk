@@ -208,13 +208,7 @@ class ShikharMobileSDK
   end
 
 
-  # Idiomatic facade: client.authentication.list / client.authentication.load({ "id" => ... })
-  def authentication
-    require_relative 'entity/authentication_entity'
-    @authentication ||= AuthenticationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.authentication instead.
+  # Canonical facade: client.Authentication.list / client.Authentication.load({ "id" => ... })
   def Authentication(data = nil)
     require_relative 'entity/authentication_entity'
     AuthenticationEntity.new(self, data)

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:authentication():list() / client:authentication():load({ id = ... })
-function ShikharMobileSDK:authentication(data)
+-- Idiomatic facade: client:Authentication():list() / client:Authentication():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ShikharMobileSDK:Authentication(data)
   local EntityMod = require("entity.authentication_entity")
   if data == nil then
     if self._authentication == nil then
@@ -253,12 +254,6 @@ function ShikharMobileSDK:authentication(data)
     end
     return self._authentication
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:authentication() instead.
-function ShikharMobileSDK:Authentication(data)
-  local EntityMod = require("entity.authentication_entity")
   return EntityMod.new(self, data)
 end
 

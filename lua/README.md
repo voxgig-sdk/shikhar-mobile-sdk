@@ -37,7 +37,8 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, _ = client:authentication():create({ name = "Example" })
+local created, err = client:Authentication():create({ name = "Example" })
+if err then error(err) end
 
 ```
 
@@ -84,8 +85,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:authentication():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Authentication():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -165,7 +166,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Authentication` | `(data) -> AuthenticationEntity` | Create a Authentication entity instance. |
+| `Authentication` | `(data) -> AuthenticationEntity` | Create an Authentication entity instance. |
 
 ### Entity interface
 
@@ -187,17 +188,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local authentication, err = client:Authentication():load({ id = "example_id" })
+    if err then error(err) end
+    -- authentication is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -224,7 +230,7 @@ API path: `/api/auth/login`
 
 ### Authentication
 
-Create an instance: `const authentication = client.authentication`
+Create an instance: `local authentication = client:Authentication(nil)`
 
 #### Operations
 
@@ -246,10 +252,10 @@ Create an instance: `const authentication = client.authentication`
 
 #### Example: Create
 
-```ts
-const authentication = await client.authentication.create({
-  mobile: /* `$STRING` */,
-  password: /* `$STRING` */,
+```lua
+local authentication, err = client:Authentication():create({
+  mobile = nil, -- `$STRING`
+  password = nil, -- `$STRING`
 })
 ```
 
@@ -325,7 +331,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local authentication = client:authentication()
+local authentication = client:Authentication()
 authentication:load({ id = "example_id" })
 
 -- authentication:data_get() now returns the loaded authentication data
