@@ -41,16 +41,16 @@ Authentication = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Authentication#create (any subset of Authentication fields).
+# Request payload for Authentication#create.
 #
 # @!attribute [rw] message
 #   @return [String, nil]
 #
 # @!attribute [rw] mobile
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] password
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] success
 #   @return [Boolean, nil]

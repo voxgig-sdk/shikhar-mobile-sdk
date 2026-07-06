@@ -16,6 +16,13 @@
 ---@field verification_id? string
 
 ---@class AuthenticationCreateData
+---@field message? string
+---@field mobile string
+---@field password string
+---@field success? boolean
+---@field token? string
+---@field user? table
+---@field verification_id? string
 
 local M = {}
 

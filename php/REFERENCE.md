@@ -8,7 +8,7 @@ Complete API reference for the ShikharMobile PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/shikhar-mobile_sdk.php';
+require_once __DIR__ . '/shikharmobile_sdk.php';
 
 $client = new ShikharMobileSDK($options);
 ```
@@ -46,11 +46,11 @@ $client = ShikharMobileSDK::test();
 
 Create a new `AuthenticationEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ShikharMobileUtility`
 
 Return a copy of the SDK utility object.
 
@@ -93,13 +93,13 @@ $authentication = $client->Authentication();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$STRING`` | No |  |
-| `mobile` | ``$STRING`` | Yes |  |
-| `password` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `token` | ``$STRING`` | No |  |
-| `user` | ``$OBJECT`` | No |  |
-| `verification_id` | ``$STRING`` | No |  |
+| `message` | `string` | No |  |
+| `mobile` | `string` | Yes |  |
+| `password` | `string` | Yes |  |
+| `success` | `bool` | No |  |
+| `token` | `string` | No |  |
+| `user` | `array` | No |  |
+| `verification_id` | `string` | No |  |
 
 ### Operations
 
@@ -109,26 +109,26 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Authentication()->create([
-  "mobile" => /* `$STRING` */,
-  "password" => /* `$STRING` */,
+  "mobile" => null, // string
+  "password" => null, // string
 ]);
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -137,7 +137,7 @@ Set the entity match criteria.
 Create a new `AuthenticationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

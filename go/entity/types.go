@@ -19,12 +19,11 @@ type Authentication struct {
 	VerificationId *string `json:"verification_id,omitempty"`
 }
 
-// AuthenticationCreateData mirrors the authentication fields as an all-optional match
-// filter (Go analog of Partial<Authentication>).
+// AuthenticationCreateData is the typed request payload for Authentication.CreateTyped.
 type AuthenticationCreateData struct {
 	Message *string `json:"message,omitempty"`
-	Mobile *string `json:"mobile,omitempty"`
-	Password *string `json:"password,omitempty"`
+	Mobile string `json:"mobile"`
+	Password string `json:"password"`
 	Success *bool `json:"success,omitempty"`
 	Token *string `json:"token,omitempty"`
 	User *map[string]any `json:"user,omitempty"`

@@ -29,10 +29,13 @@ class Authentication(AuthenticationRequired, total=False):
     verification_id: str
 
 
-class AuthenticationCreateData(TypedDict, total=False):
-    message: str
+class AuthenticationCreateDataRequired(TypedDict):
     mobile: str
     password: str
+
+
+class AuthenticationCreateData(AuthenticationCreateDataRequired, total=False):
+    message: str
     success: bool
     token: str
     user: dict

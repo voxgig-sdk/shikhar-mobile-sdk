@@ -117,13 +117,13 @@ const authentication = client.Authentication()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$STRING`` | No |  |
-| `mobile` | ``$STRING`` | Yes |  |
-| `password` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `token` | ``$STRING`` | No |  |
-| `user` | ``$OBJECT`` | No |  |
-| `verification_id` | ``$STRING`` | No |  |
+| `message` | `string` | No |  |
+| `mobile` | `string` | Yes |  |
+| `password` | `string` | Yes |  |
+| `success` | `boolean` | No |  |
+| `token` | `string` | No |  |
+| `user` | `Record<string, any>` | No |  |
+| `verification_id` | `string` | No |  |
 
 ### Operations
 
@@ -133,8 +133,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Authentication().create({
-  mobile: /* `$STRING` */,
-  password: /* `$STRING` */,
+  mobile: /* string */,
+  password: /* string */,
 })
 ```
 

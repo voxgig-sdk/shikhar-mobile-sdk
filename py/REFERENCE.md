@@ -8,7 +8,7 @@ Complete API reference for the ShikharMobile Python SDK.
 ### Constructor
 
 ```python
-from shikhar-mobile_sdk import ShikharMobileSDK
+from shikharmobile_sdk import ShikharMobileSDK
 
 client = ShikharMobileSDK(options)
 ```
@@ -88,13 +88,13 @@ authentication = client.Authentication()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$STRING`` | No |  |
-| `mobile` | ``$STRING`` | Yes |  |
-| `password` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `token` | ``$STRING`` | No |  |
-| `user` | ``$OBJECT`` | No |  |
-| `verification_id` | ``$STRING`` | No |  |
+| `message` | `str` | No |  |
+| `mobile` | `str` | Yes |  |
+| `password` | `str` | Yes |  |
+| `success` | `bool` | No |  |
+| `token` | `str` | No |  |
+| `user` | `dict` | No |  |
+| `verification_id` | `str` | No |  |
 
 ### Operations
 
@@ -104,8 +104,8 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Authentication().create({
-    "mobile": ...,  # `$STRING`
-    "password": ...,  # `$STRING`
+    "mobile": "example",  # str
+    "password": "example",  # str
 })
 ```
 

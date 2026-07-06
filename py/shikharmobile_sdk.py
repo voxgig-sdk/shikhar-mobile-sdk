@@ -221,7 +221,7 @@ class ShikharMobileSDK:
 
 
     def Authentication(self, data=None) -> "AuthenticationEntity":
-        """Entity factory: client.Authentication().list({}) / client.Authentication().load({"id": ...})."""
+        """Entity factory: client.Authentication().list() / client.Authentication().load({"id": ...})."""
         from entity.authentication_entity import AuthenticationEntity
         return AuthenticationEntity(self, data)
 

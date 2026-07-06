@@ -8,7 +8,7 @@ Complete API reference for the ShikharMobile Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'shikhar-mobile_sdk'
+require_relative 'ShikharMobile_sdk'
 
 client = ShikharMobileSDK.new(options)
 ```
@@ -94,13 +94,13 @@ authentication = client.Authentication
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$STRING`` | No |  |
-| `mobile` | ``$STRING`` | Yes |  |
-| `password` | ``$STRING`` | Yes |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `token` | ``$STRING`` | No |  |
-| `user` | ``$OBJECT`` | No |  |
-| `verification_id` | ``$STRING`` | No |  |
+| `message` | `String` | No |  |
+| `mobile` | `String` | Yes |  |
+| `password` | `String` | Yes |  |
+| `success` | `Boolean` | No |  |
+| `token` | `String` | No |  |
+| `user` | `Hash` | No |  |
+| `verification_id` | `String` | No |  |
 
 ### Operations
 
@@ -110,8 +110,8 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Authentication.create({
-  "mobile" => # `$STRING`,
-  "password" => # `$STRING`,
+  "mobile" => "example", # String
+  "password" => "example", # String
 })
 ```
 

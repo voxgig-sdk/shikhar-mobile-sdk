@@ -15,5 +15,13 @@ export interface Authentication {
   verification_id?: string
 }
 
-export type AuthenticationCreateData = Partial<Authentication>
+export interface AuthenticationCreateData {
+  message?: string
+  mobile: string
+  password: string
+  success?: boolean
+  token?: string
+  user?: Record<string, any>
+  verification_id?: string
+}
 

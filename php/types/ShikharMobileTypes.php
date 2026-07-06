@@ -24,12 +24,12 @@ class Authentication
     public ?string $verification_id = null;
 }
 
-/** Match filter for Authentication#create (any subset of Authentication fields). */
+/** Request payload for Authentication#create. */
 class AuthenticationCreateData
 {
     public ?string $message = null;
-    public ?string $mobile = null;
-    public ?string $password = null;
+    public string $mobile;
+    public string $password;
     public ?bool $success = null;
     public ?string $token = null;
     public ?array $user = null;
