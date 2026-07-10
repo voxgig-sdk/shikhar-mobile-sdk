@@ -37,7 +37,7 @@ $client = new ShikharMobileSDK([
 
 ```php
 // create() returns the bare created Authentication record.
-$created = $client->Authentication()->create(["mobile" => "example", "password" => "example"]);
+$created = $client->Authentication()->create(["mobile" => "example_mobile", "password" => "example_password"]);
 
 ```
 

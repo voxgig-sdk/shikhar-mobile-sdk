@@ -104,8 +104,8 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Authentication().create({
-    "mobile": "example",  # str
-    "password": "example",  # str
+    "mobile": "example_mobile",  # str
+    "password": "example_password",  # str
 })
 ```
 

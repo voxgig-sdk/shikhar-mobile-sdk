@@ -110,8 +110,8 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Authentication.create({
-  "mobile" => "example", # String
-  "password" => "example", # String
+  "mobile" => "example_mobile", # String
+  "password" => "example_password", # String
 })
 ```
 

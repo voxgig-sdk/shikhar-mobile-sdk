@@ -331,8 +331,8 @@ Create an instance: `const authentication = client.Authentication()`
 
 ```ts
 const authentication = await client.Authentication().create({
-  mobile: /* string */,
-  password: /* string */,
+  mobile: 'example_mobile',
+  password: 'example_password',
 })
 ```
 

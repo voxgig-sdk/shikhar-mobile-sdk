@@ -43,7 +43,7 @@ client = ShikharMobileSDK({
 
 ```python
 # Create — returns the bare created record (a dict)
-created = client.Authentication().create({"mobile": "example", "password": "example"})
+created = client.Authentication().create({"mobile": "example_mobile", "password": "example_password"})
 
 ```
 
@@ -284,8 +284,8 @@ Create an instance: `authentication = client.Authentication()`
 
 ```python
 authentication = client.Authentication().create({
-    "mobile": "example",  # str
-    "password": "example",  # str
+    "mobile": "example_mobile",  # str
+    "password": "example_password",  # str
 })
 ```
 

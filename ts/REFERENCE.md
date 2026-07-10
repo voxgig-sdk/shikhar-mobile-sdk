@@ -133,8 +133,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Authentication().create({
-  mobile: /* string */,
-  password: /* string */,
+  mobile: 'example_mobile',
+  password: 'example_password',
 })
 ```
 

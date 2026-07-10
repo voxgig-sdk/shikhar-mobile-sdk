@@ -36,7 +36,7 @@ client = ShikharMobileSDK.new({
 
 ```ruby
 # create returns the bare created Authentication record.
-created = client.Authentication.create({ "mobile" => "example", "password" => "example" })
+created = client.Authentication.create({ "mobile" => "example_mobile", "password" => "example_password" })
 
 ```
 
@@ -277,8 +277,8 @@ Create an instance: `authentication = client.Authentication`
 
 ```ruby
 authentication = client.Authentication.create({
-  "mobile" => "example", # String
-  "password" => "example", # String
+  "mobile" => "example_mobile", # String
+  "password" => "example_password", # String
 })
 ```
 

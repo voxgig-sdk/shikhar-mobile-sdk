@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -238,14 +235,24 @@
           "url": "https://shikhar.hulcd.com/login"
         },
         "description": "This API enables users to interact with the Shikhar mobile application, allowing actions such as user login, mobile number verification, and other app-related functionalities. It's designed to facilitate seamless communication between the mobile client and the server.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "Authorization",
+          "prefix": "Bearer",
+          "scheme": "bearerAuth",
+          "type": "http"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://shikhar.hulcd.com"
           }
         ],
+        "summary": "This API enables users to interact with the Shikhar mobile application, allowing actions such as user login, mobile number verification, and other app-related functionalities.",
         "title": "Shikhar Mobile API",
-        "version": "12.8v14"
+        "version": "12.8v14",
+        "website": "https://shikhar.hulcd.com"
       },
       "option": {},
       "target": {
@@ -298,6 +305,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -348,6 +358,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
