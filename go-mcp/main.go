@@ -37,7 +37,20 @@ func main() {
 	addr := flag.String("addr", ":8080", "listen address for http transport")
 	flag.Parse()
 
-	client := sdk.NewShikharMobileSDK(nil)
+	// Configure from the environment: SHIKHAR_MOBILE_APIKEY carries the API key and
+	// SHIKHAR_MOBILE_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("SHIKHAR_MOBILE_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("SHIKHAR_MOBILE_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewShikharMobileSDK(opts)
 	server := mcp.NewServer(
 		&mcp.Implementation{
 			Name:    "shikhar-mobile",
