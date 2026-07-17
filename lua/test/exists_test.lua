@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ShikharMobile SDK exists test
 
 local sdk = require("shikhar-mobile_sdk")
 
