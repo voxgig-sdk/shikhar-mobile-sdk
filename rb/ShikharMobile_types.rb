@@ -10,11 +10,17 @@
 
 # Authentication entity data model.
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] message
 #   @return [String, nil]
 #
 # @!attribute [rw] mobile
-#   @return [String]
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
 #
 # @!attribute [rw] password
 #   @return [String]
@@ -22,32 +28,32 @@
 # @!attribute [rw] success
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] token
-#   @return [String, nil]
-#
-# @!attribute [rw] user
-#   @return [Hash, nil]
-#
-# @!attribute [rw] verification_id
+# @!attribute [rw] verificationId
 #   @return [String, nil]
 Authentication = Struct.new(
+  :id,
   :message,
   :mobile,
+  :name,
   :password,
   :success,
-  :token,
-  :user,
-  :verification_id,
+  :verificationId,
   keyword_init: true
 )
 
 # Request payload for Authentication#create.
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] message
 #   @return [String, nil]
 #
 # @!attribute [rw] mobile
-#   @return [String]
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
 #
 # @!attribute [rw] password
 #   @return [String]
@@ -55,22 +61,16 @@ Authentication = Struct.new(
 # @!attribute [rw] success
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] token
-#   @return [String, nil]
-#
-# @!attribute [rw] user
-#   @return [Hash, nil]
-#
-# @!attribute [rw] verification_id
+# @!attribute [rw] verificationId
 #   @return [String, nil]
 AuthenticationCreateData = Struct.new(
+  :id,
   :message,
   :mobile,
+  :name,
   :password,
   :success,
-  :token,
-  :user,
-  :verification_id,
+  :verificationId,
   keyword_init: true
 )
 

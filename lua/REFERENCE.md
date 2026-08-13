@@ -91,13 +91,25 @@ local authentication = client:Authentication(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `mobile` | `string` | Yes |  |
+| `mobile` | `string` | No |  |
+| `name` | `string` | No |  |
 | `password` | `string` | Yes |  |
 | `success` | `boolean` | No |  |
-| `token` | `string` | No |  |
-| `user` | `table` | No |  |
-| `verification_id` | `string` | No |  |
+| `verificationId` | `string` | No |  |
+
+### Field Usage by Operation
+
+| Field | create |
+| --- | --- |
+| `id` | - |
+| `message` | - |
+| `mobile` | Yes |
+| `name` | - |
+| `password` | - |
+| `success` | - |
+| `verificationId` | - |
 
 ### Operations
 
@@ -107,7 +119,6 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Authentication():create({
-  mobile = --[[ string ]],
   password = --[[ string ]],
 })
 ```

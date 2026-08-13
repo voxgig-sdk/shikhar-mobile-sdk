@@ -94,13 +94,25 @@ authentication = client.Authentication
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `String` | No |  |
 | `message` | `String` | No |  |
-| `mobile` | `String` | Yes |  |
+| `mobile` | `String` | No |  |
+| `name` | `String` | No |  |
 | `password` | `String` | Yes |  |
 | `success` | `Boolean` | No |  |
-| `token` | `String` | No |  |
-| `user` | `Hash` | No |  |
-| `verification_id` | `String` | No |  |
+| `verificationId` | `String` | No |  |
+
+### Field Usage by Operation
+
+| Field | create |
+| --- | --- |
+| `id` | - |
+| `message` | - |
+| `mobile` | Yes |
+| `name` | - |
+| `password` | - |
+| `success` | - |
+| `verificationId` | - |
 
 ### Operations
 
@@ -110,7 +122,6 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Authentication.create({
-  "mobile" => "example_mobile", # String
   "password" => "example_password", # String
 })
 ```

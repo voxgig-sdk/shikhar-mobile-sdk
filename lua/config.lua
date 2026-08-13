@@ -29,49 +29,55 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "message",
+            ["name"] = "id",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "mobile",
-            ["req"] = true,
+            ["name"] = "message",
+            ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "mobile",
+            ["op"] = {
+              ["create"] = {
+                ["req"] = true,
+                ["type"] = "`$STRING`",
+              },
+            },
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["index$"] = 2,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "name",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["index$"] = 3,
           },
           {
             ["active"] = true,
             ["name"] = "password",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
+            ["index$"] = 4,
           },
           {
             ["active"] = true,
             ["name"] = "success",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 3,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "token",
-            ["req"] = false,
-            ["type"] = "`$STRING`",
-            ["index$"] = 4,
-          },
-          {
-            ["active"] = true,
-            ["name"] = "user",
-            ["req"] = false,
-            ["type"] = "`$OBJECT`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "verification_id",
+            ["name"] = "verificationId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
@@ -86,6 +92,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/auth/login",
                 ["parts"] = {
@@ -96,13 +103,14 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.user`",
                 },
                 ["index$"] = 0,
               },
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/auth/verify-mobile",
                 ["parts"] = {

@@ -8,6 +8,7 @@ guide: {
   entity: authentication: {
     path: "/api/auth/login": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.user`")|top
     }
     path: "/api/auth/verify-mobile": {
       op: create: method: *POST

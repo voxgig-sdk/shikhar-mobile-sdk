@@ -29,49 +29,55 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "message",
+						"name": "id",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "mobile",
-						"req": true,
+						"name": "message",
+						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
+					},
+					map[string]any{
+						"active": true,
+						"name": "mobile",
+						"op": map[string]any{
+							"create": map[string]any{
+								"req": true,
+								"type": "`$STRING`",
+							},
+						},
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 2,
+					},
+					map[string]any{
+						"active": true,
+						"name": "name",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
 						"name": "password",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 2,
+						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
 						"name": "success",
 						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 3,
-					},
-					map[string]any{
-						"active": true,
-						"name": "token",
-						"req": false,
-						"type": "`$STRING`",
-						"index$": 4,
-					},
-					map[string]any{
-						"active": true,
-						"name": "user",
-						"req": false,
-						"type": "`$OBJECT`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "verification_id",
+						"name": "verificationId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 6,
@@ -86,6 +92,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/login",
 								"parts": []any{
@@ -96,13 +103,14 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.user`",
 								},
 								"index$": 0,
 							},
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/verify-mobile",
 								"parts": []any{
@@ -118,7 +126,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{

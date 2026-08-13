@@ -99,13 +99,25 @@ fmt.Println(authentication.GetName()) // "authentication"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `mobile` | `string` | Yes |  |
+| `mobile` | `string` | No |  |
+| `name` | `string` | No |  |
 | `password` | `string` | Yes |  |
 | `success` | `bool` | No |  |
-| `token` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
-| `verification_id` | `string` | No |  |
+| `verificationId` | `string` | No |  |
+
+### Field Usage by Operation
+
+| Field | create |
+| --- | --- |
+| `id` | - |
+| `message` | - |
+| `mobile` | Yes |
+| `name` | - |
+| `password` | - |
+| `success` | - |
+| `verificationId` | - |
 
 ### Operations
 
@@ -115,7 +127,6 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Authentication(nil).Create(map[string]any{
-    "mobile": "example_mobile",
     "password": "example_password",
 }, nil)
 if err != nil {

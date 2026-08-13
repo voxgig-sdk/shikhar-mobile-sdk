@@ -42,8 +42,8 @@ client = ShikharMobileSDK({
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
-created = client.Authentication().create({"mobile": "example_mobile", "password": "example_password"})
+# Create — returns the ENTITY (call data_get() for the record)
+created = client.Authentication().create({"password": "example_password"})
 
 ```
 
@@ -54,7 +54,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    authentication = client.Authentication().create({ "mobile": "example", "password": "example" })
+    authentication = client.Authentication().create({ "password": "example" })
     print(authentication)
 except Exception as err:
     print(f"create failed: {err}")
@@ -121,8 +121,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ShikharMobileSDK.test()
 
-# Entity ops return the bare record and raise on error.
-authentication = client.Authentication().create({"mobile": "example", "password": "example"})
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+authentication = client.Authentication().create({"password": "example"})
 # authentication contains the mock response record
 ```
 
@@ -219,7 +220,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -241,13 +242,13 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `message` |  |
 | `mobile` |  |
+| `name` |  |
 | `password` |  |
 | `success` |  |
-| `token` |  |
-| `user` |  |
-| `verification_id` |  |
+| `verificationId` |  |
 
 Operations: Create.
 
@@ -272,19 +273,18 @@ Create an instance: `authentication = client.Authentication()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `str` |  |
 | `message` | `str` |  |
 | `mobile` | `str` |  |
+| `name` | `str` |  |
 | `password` | `str` |  |
 | `success` | `bool` |  |
-| `token` | `str` |  |
-| `user` | `dict` |  |
-| `verification_id` | `str` |  |
+| `verificationId` | `str` |  |
 
 #### Example: Create
 
 ```python
 authentication = client.Authentication().create({
-    "mobile": "example_mobile",  # str
     "password": "example_password",  # str
 })
 ```
@@ -366,7 +366,7 @@ stores the returned data and match criteria internally.
 
 ```python
 authentication = client.Authentication()
-authentication.create({ "mobile": "example", "password": "example" })
+authentication.create({ "password": "example" })
 
 # authentication.data_get() now returns the authentication data from the last create
 # authentication.match_get() returns the last match criteria

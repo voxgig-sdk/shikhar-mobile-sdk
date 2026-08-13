@@ -16,11 +16,11 @@
 import pytest
 
 from shikharmobile_sdk import ShikharMobileSDK
-from core.error import ShikharMobileError
-from core.result import ShikharMobileResult
-from core.response import ShikharMobileResponse
-from core.spec import ShikharMobileSpec
-from feature.base_feature import ShikharMobileBaseFeature
+from shikharmobile_sdk.core.error import ShikharMobileError
+from shikharmobile_sdk.core.result import ShikharMobileResult
+from shikharmobile_sdk.core.response import ShikharMobileResponse
+from shikharmobile_sdk.core.spec import ShikharMobileSpec
+from shikharmobile_sdk.feature.base_feature import ShikharMobileBaseFeature
 
 
 def _client():

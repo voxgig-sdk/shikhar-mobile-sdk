@@ -24,7 +24,6 @@ support (`create`):
 ```ts
 const client = new ShikharMobileSDK()
 const authentication = await client.Authentication().create({
-  mobile: 'example',
   password: 'example',
 })
 ```
@@ -41,9 +40,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ShikharMobileSDK.test()
-const authentication = await client.Authentication().create({ mobile: 'example_mobile', password: 'example_password' })
-// authentication is a bare Authentication populated with mock data
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ShikharMobileSDK.test({
+  entity: {
+    authentication: {
+      test01: { id: 'test01', password: 'example_password' },
+    },
+  },
+})
+const authentication = await client.Authentication().create({ password: 'example_password' })
+// authentication is the Authentication entity, populated with mock data
+// — call authentication.data() for the record itself
 console.log(authentication)
 ```
 
@@ -51,7 +59,7 @@ console.log(authentication)
 
 ```python
 client = ShikharMobileSDK.test()
-authentication = client.Authentication().create({"mobile": "example", "password": "example"})
+authentication = client.Authentication().create({"password": "example"})
 print(authentication)
 ```
 
@@ -62,7 +70,7 @@ print(authentication)
 $client = ShikharMobileSDK::test([
     "entity" => ["authentication" => ["test01" => []]],
 ]);
-$authentication = $client->Authentication()->create(["mobile" => "example", "password" => "example"]);
+$authentication = $client->Authentication()->create(["password" => "example"]);
 ```
 
 ### Golang
@@ -70,7 +78,7 @@ $authentication = $client->Authentication()->create(["mobile" => "example", "pas
 ```go
 client := sdk.Test()
 result, err := client.Authentication(nil).Create(
-    map[string]any{"mobile": "example", "password": "example"}, nil,
+    map[string]any{"password": "example"}, nil,
 )
 ```
 
@@ -81,14 +89,14 @@ result, err := client.Authentication(nil).Create(
 client = ShikharMobileSDK.test({
   "entity" => { "authentication" => { "test01" => {} } },
 })
-authentication = client.Authentication.create({ "mobile" => "example", "password" => "example" })
+authentication = client.Authentication.create({ "password" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Authentication():create({ mobile = "example", password = "example" })
+local result, err = client:Authentication():create({ password = "example" })
 ```
 
 ## Packages
@@ -335,6 +343,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://shikhar.hulcd.com/login](https://shikhar.hulcd.com/login)
 

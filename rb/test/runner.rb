@@ -23,8 +23,8 @@ module ShikharMobileTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("SHIKHARMOBILE_TEST_LIVE")
-    override = getenv("SHIKHARMOBILE_TEST_OVERRIDE")
+    live = getenv("SHIKHAR_MOBILE_TEST_LIVE")
+    override = getenv("SHIKHAR_MOBILE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ShikharMobileTestRunner
       end
     end
 
-    explain = getenv("SHIKHARMOBILE_TEST_EXPLAIN")
-    m["SHIKHARMOBILE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("SHIKHAR_MOBILE_TEST_EXPLAIN")
+    m["SHIKHAR_MOBILE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

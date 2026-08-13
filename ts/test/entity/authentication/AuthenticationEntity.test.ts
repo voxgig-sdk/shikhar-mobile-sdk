@@ -26,8 +26,8 @@ import {
 describe('AuthenticationEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SHIKHARMOBILE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SHIKHARMOBILE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SHIKHAR_MOBILE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SHIKHAR_MOBILE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ShikharMobileSDK.test()
@@ -62,8 +62,8 @@ describe('AuthenticationEntity', async () => {
     const authentication_ref01_ent = client.Authentication()
     let authentication_ref01_data = setup.data.new.authentication['authentication_ref01']
 
-    authentication_ref01_data = await authentication_ref01_ent.create(authentication_ref01_data)
-    assert(null != authentication_ref01_data)
+    authentication_ref01_data = (await authentication_ref01_ent.create(authentication_ref01_data)).data()
+    assert(null != authentication_ref01_data.id)
 
 
   })

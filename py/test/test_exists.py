@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ShikharMobile SDK exists test
 
 import pytest
 from shikharmobile_sdk import ShikharMobileSDK

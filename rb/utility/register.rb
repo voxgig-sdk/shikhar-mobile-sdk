@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ShikharMobileUtility.registrar = ->(u) {
   u.prepare_params = ShikharMobileUtilities::PrepareParams
   u.prepare_path = ShikharMobileUtilities::PreparePath
   u.prepare_query = ShikharMobileUtilities::PrepareQuery
+  u.graphql_body = ShikharMobileUtilities::GraphqlBody
+  u.graphql_errors = ShikharMobileUtilities::GraphqlErrors
   u.result_basic = ShikharMobileUtilities::ResultBasic
   u.result_body = ShikharMobileUtilities::ResultBody
   u.result_headers = ShikharMobileUtilities::ResultHeaders

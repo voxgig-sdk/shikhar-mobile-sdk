@@ -6,13 +6,29 @@ main: kit: entity: authentication: {
 
   fields: [
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "message"
       req: false
       type: "`$STRING`"
     }
     {
       name: "mobile"
-      req: true
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
       type: "`$STRING`"
     }
     {
@@ -26,21 +42,16 @@ main: kit: entity: authentication: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "token"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "user"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "verification_id"
+      name: "verificationId"
       req: false
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "authentication"
   op: {
@@ -57,7 +68,7 @@ main: kit: entity: authentication: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.user`"
           }
         }
         {

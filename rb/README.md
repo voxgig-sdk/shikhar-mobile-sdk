@@ -35,8 +35,8 @@ client = ShikharMobileSDK.new({
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created Authentication record.
-created = client.Authentication.create({ "mobile" => "example_mobile", "password" => "example_password" })
+# create returns the ENTITY — call data_get for the created Authentication record.
+created = client.Authentication.create({ "password" => "example_password" })
 
 ```
 
@@ -47,7 +47,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  authentication = client.Authentication.create({ "mobile" => "example", "password" => "example" })
+  authentication = client.Authentication.create({ "password" => "example" })
 rescue => err
   warn "create failed: #{err}"
 end
@@ -115,8 +115,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ShikharMobileSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-authentication = client.Authentication.create({ "mobile" => "example", "password" => "example" })
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+authentication = client.Authentication.create({ "password" => "example" })
 puts authentication
 ```
 
@@ -234,13 +235,13 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `message` |  |
 | `mobile` |  |
+| `name` |  |
 | `password` |  |
 | `success` |  |
-| `token` |  |
-| `user` |  |
-| `verification_id` |  |
+| `verificationId` |  |
 
 Operations: Create.
 
@@ -265,19 +266,18 @@ Create an instance: `authentication = client.Authentication`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `String` |  |
 | `message` | `String` |  |
 | `mobile` | `String` |  |
+| `name` | `String` |  |
 | `password` | `String` |  |
 | `success` | `Boolean` |  |
-| `token` | `String` |  |
-| `user` | `Hash` |  |
-| `verification_id` | `String` |  |
+| `verificationId` | `String` |  |
 
 #### Example: Create
 
 ```ruby
 authentication = client.Authentication.create({
-  "mobile" => "example_mobile", # String
   "password" => "example_password", # String
 })
 ```
@@ -360,7 +360,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 authentication = client.Authentication
-authentication.create({ "mobile" => "example", "password" => "example" })
+authentication.create({ "password" => "example" })
 
 # authentication.data_get now returns the authentication data from the last create
 # authentication.match_get returns the last match criteria

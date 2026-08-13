@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ShikharMobileControl
-from core.error import ShikharMobileError
-from core.result import ShikharMobileResult
-from core.spec import ShikharMobileSpec
+from shikharmobile_sdk.config import make_config
+from shikharmobile_sdk.features import _make_feature
+from shikharmobile_sdk.core.control import ShikharMobileControl
+from shikharmobile_sdk.core.error import ShikharMobileError
+from shikharmobile_sdk.core.result import ShikharMobileResult
+from shikharmobile_sdk.core.spec import ShikharMobileSpec
 
 
 # True when this SDK was generated with the named feature.
