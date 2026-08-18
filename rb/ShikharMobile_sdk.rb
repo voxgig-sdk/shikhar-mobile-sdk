@@ -28,7 +28,7 @@ class ShikharMobileSDK
     utility = ShikharMobileUtility.new
     @_utility = utility
 
-    config = ShikharMobileConfig.make_config
+    config = ShikharMobileConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

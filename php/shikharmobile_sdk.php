@@ -40,7 +40,7 @@ class ShikharMobileSDK
         $utility = new ShikharMobileUtility();
         $this->_utility = $utility;
 
-        $config = ShikharMobileConfig::make_config();
+        $config = ShikharMobileConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
