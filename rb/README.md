@@ -237,9 +237,9 @@ returns a result `Hash` with these keys:
 | --- | --- |
 | `id` |  |
 | `message` |  |
-| `mobile` |  |
+| `mobile` | User's mobile number |
 | `name` |  |
-| `password` |  |
+| `password` | User's password |
 | `success` |  |
 | `verificationId` |  |
 
@@ -268,9 +268,9 @@ Create an instance: `authentication = client.Authentication`
 | --- | --- | --- |
 | `id` | `String` |  |
 | `message` | `String` |  |
-| `mobile` | `String` |  |
+| `mobile` | `String` | User's mobile number |
 | `name` | `String` |  |
-| `password` | `String` |  |
+| `password` | `String` | User's password |
 | `success` | `Boolean` |  |
 | `verificationId` | `String` |  |
 

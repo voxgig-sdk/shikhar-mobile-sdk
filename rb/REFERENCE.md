@@ -96,9 +96,9 @@ authentication = client.Authentication
 | --- | --- | --- | --- |
 | `id` | `String` | No |  |
 | `message` | `String` | No |  |
-| `mobile` | `String` | No |  |
+| `mobile` | `String` | No | User's mobile number |
 | `name` | `String` | No |  |
-| `password` | `String` | Yes |  |
+| `password` | `String` | Yes | User's password |
 | `success` | `Boolean` | No |  |
 | `verificationId` | `String` | No |  |
 

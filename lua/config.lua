@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "ShikharMobile",
+      slug = "shikhar-mobile",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -46,6 +49,7 @@ local function make_config()
                 ["type"] = "`$STRING`",
               },
             },
+            ["short"] = "User's mobile number",
             ["type"] = "`$STRING`",
           },
           {
@@ -55,6 +59,7 @@ local function make_config()
           {
             ["name"] = "password",
             ["req"] = true,
+            ["short"] = "User's password",
             ["type"] = "`$STRING`",
           },
           {

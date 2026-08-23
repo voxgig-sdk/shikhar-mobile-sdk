@@ -232,9 +232,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `id` |  |
 | `message` |  |
-| `mobile` |  |
+| `mobile` | User's mobile number |
 | `name` |  |
-| `password` |  |
+| `password` | User's password |
 | `success` |  |
 | `verificationId` |  |
 
@@ -263,9 +263,9 @@ Create an instance: `local authentication = client:Authentication(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `mobile` | `string` |  |
+| `mobile` | `string` | User's mobile number |
 | `name` | `string` |  |
-| `password` | `string` |  |
+| `password` | `string` | User's password |
 | `success` | `boolean` |  |
 | `verificationId` | `string` |  |
 

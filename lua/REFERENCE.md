@@ -93,9 +93,9 @@ local authentication = client:Authentication(nil)
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `mobile` | `string` | No |  |
+| `mobile` | `string` | No | User's mobile number |
 | `name` | `string` | No |  |
-| `password` | `string` | Yes |  |
+| `password` | `string` | Yes | User's password |
 | `success` | `boolean` | No |  |
 | `verificationId` | `string` | No |  |
 

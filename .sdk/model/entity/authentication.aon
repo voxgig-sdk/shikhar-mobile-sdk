@@ -24,6 +24,7 @@ main: kit: entity: authentication: {
         }
       }
       req: false
+      short: "User's mobile number"
       type: "`$STRING`"
     }
     {
@@ -34,6 +35,7 @@ main: kit: entity: authentication: {
     {
       name: "password"
       req: true
+      short: "User's password"
       type: "`$STRING`"
     }
     {

@@ -247,9 +247,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 | --- | --- |
 | `id` |  |
 | `message` |  |
-| `mobile` |  |
+| `mobile` | User's mobile number |
 | `name` |  |
-| `password` |  |
+| `password` | User's password |
 | `success` |  |
 | `verificationId` |  |
 
@@ -278,9 +278,9 @@ Create an instance: `$authentication = $client->Authentication();`
 | --- | --- | --- |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `mobile` | `string` |  |
+| `mobile` | `string` | User's mobile number |
 | `name` | `string` |  |
-| `password` | `string` |  |
+| `password` | `string` | User's password |
 | `success` | `bool` |  |
 | `verificationId` | `string` |  |
 

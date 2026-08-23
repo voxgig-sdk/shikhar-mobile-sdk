@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ShikharMobile',
+        slug: "shikhar-mobile",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -74,6 +85,7 @@ class Config {
               "type": "`$STRING`"
             }
           },
+          "short": "User's mobile number",
           "type": "`$STRING`"
         },
         {
@@ -83,6 +95,7 @@ class Config {
         {
           "name": "password",
           "req": true,
+          "short": "User's password",
           "type": "`$STRING`"
         },
         {

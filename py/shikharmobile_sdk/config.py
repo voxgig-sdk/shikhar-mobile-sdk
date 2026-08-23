@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "ShikharMobile",
+            "slug": "shikhar-mobile",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -67,6 +70,7 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
+            "short": "User's mobile number",
             "type": "`$STRING`",
           },
           {
@@ -76,6 +80,7 @@ def make_config():
           {
             "name": "password",
             "req": True,
+            "short": "User's password",
             "type": "`$STRING`",
           },
           {

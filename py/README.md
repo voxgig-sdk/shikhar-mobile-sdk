@@ -244,9 +244,9 @@ On error, `ok` is `False` and `err` contains the error value.
 | --- | --- |
 | `id` |  |
 | `message` |  |
-| `mobile` |  |
+| `mobile` | User's mobile number |
 | `name` |  |
-| `password` |  |
+| `password` | User's password |
 | `success` |  |
 | `verificationId` |  |
 
@@ -275,9 +275,9 @@ Create an instance: `authentication = client.Authentication()`
 | --- | --- | --- |
 | `id` | `str` |  |
 | `message` | `str` |  |
-| `mobile` | `str` |  |
+| `mobile` | `str` | User's mobile number |
 | `name` | `str` |  |
-| `password` | `str` |  |
+| `password` | `str` | User's password |
 | `success` | `bool` |  |
 | `verificationId` | `str` |  |
 

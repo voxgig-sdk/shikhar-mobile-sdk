@@ -33,6 +33,9 @@ class ShikharMobileConfig
         return [
             "main" => [
                 "name" => "ShikharMobile",
+                "slug" => "shikhar-mobile",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -72,6 +75,7 @@ class ShikharMobileConfig
                   'type' => '`$STRING`',
                 ],
               ],
+              'short' => 'User\'s mobile number',
               'type' => '`$STRING`',
             ],
             [
@@ -81,6 +85,7 @@ class ShikharMobileConfig
             [
               'name' => 'password',
               'req' => true,
+              'short' => 'User\'s password',
               'type' => '`$STRING`',
             ],
             [

@@ -19,6 +19,9 @@ module ShikharMobileConfig
     {
       "main" => {
         "name" => "ShikharMobile",
+        "slug" => "shikhar-mobile",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -58,6 +61,7 @@ module ShikharMobileConfig
                   "type" => "`$STRING`",
                 },
               },
+              "short" => "User's mobile number",
               "type" => "`$STRING`",
             },
             {
@@ -67,6 +71,7 @@ module ShikharMobileConfig
             {
               "name" => "password",
               "req" => true,
+              "short" => "User's password",
               "type" => "`$STRING`",
             },
             {

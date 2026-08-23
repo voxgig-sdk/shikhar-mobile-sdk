@@ -6,7 +6,7 @@ The Golang SDK for the ShikharMobile API — an entity-oriented client using sta
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Authentication(nil)` — each with the same small set of operations (`Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -265,9 +265,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"id"` |  |
 | `"message"` |  |
-| `"mobile"` |  |
+| `"mobile"` | User's mobile number |
 | `"name"` |  |
-| `"password"` |  |
+| `"password"` | User's password |
 | `"success"` |  |
 | `"verificationId"` |  |
 
@@ -296,9 +296,9 @@ Create an instance: `authentication := client.Authentication(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `mobile` | `string` |  |
+| `mobile` | `string` | User's mobile number |
 | `name` | `string` |  |
-| `password` | `string` |  |
+| `password` | `string` | User's password |
 | `success` | `bool` |  |
 | `verificationId` | `string` |  |
 

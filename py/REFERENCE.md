@@ -90,9 +90,9 @@ authentication = client.Authentication()
 | --- | --- | --- | --- |
 | `id` | `str` | No |  |
 | `message` | `str` | No |  |
-| `mobile` | `str` | No |  |
+| `mobile` | `str` | No | User's mobile number |
 | `name` | `str` | No |  |
-| `password` | `str` | Yes |  |
+| `password` | `str` | Yes | User's password |
 | `success` | `bool` | No |  |
 | `verificationId` | `str` | No |  |
 
