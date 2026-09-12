@@ -1,6 +1,14 @@
 # ShikharMobile SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -79,6 +87,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "password",
             "name": "password",
             "req": True,
             "short": "User's password",
@@ -93,6 +102,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "authentication",
         "op": {
           "create": {
@@ -104,32 +117,54 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/login",
-                "parts": [
-                  "api",
-                  "auth",
-                  "login",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "auth",
+                  },
+                  {
+                    "lit": "login",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.user`",
                 },
+                "parts": [
+                  "api",
+                  "auth",
+                  "login",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/verify-mobile",
-                "parts": [
-                  "api",
-                  "auth",
-                  "verify-mobile",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "auth",
+                  },
+                  {
+                    "lit": "verify-mobile",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "auth",
+                  "verify-mobile",
+                ],
               },
             ],
           },

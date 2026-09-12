@@ -52,7 +52,7 @@ func TestAuthenticationEntity(t *testing.T) {
 		// CREATE
 		authenticationRef01Ent := client.Authentication(nil)
 		authenticationRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "authentication"}, setup.data), "authentication_ref01"))
+			vs.GetPath(setup.data, []any{"new", "authentication"}), "authentication_ref01"))
 
 		authenticationRef01DataResult, err := authenticationRef01Ent.Create(authenticationRef01Data, nil)
 		if err != nil {
@@ -93,7 +93,7 @@ func authenticationBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"authentication01", "authentication02", "authentication03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -113,7 +113,7 @@ func authenticationBasicSetup(extra map[string]any) *entityTestSetup {
 		"SHIKHAR_MOBILE_TEST_AUTHENTICATION_ENTID": idmap,
 		"SHIKHAR_MOBILE_TEST_LIVE":      "FALSE",
 		"SHIKHAR_MOBILE_TEST_EXPLAIN":   "FALSE",
-		"SHIKHAR_MOBILE_APIKEY":         "NONE",
+		"SHIKHAR_MOBILE_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SHIKHAR_MOBILE_TEST_AUTHENTICATION_ENTID"])
@@ -122,11 +122,23 @@ func authenticationBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SHIKHAR_MOBILE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SHIKHAR_MOBILE_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewShikharMobileSDK(core.ToMapAny(mergedOpts))
 	}

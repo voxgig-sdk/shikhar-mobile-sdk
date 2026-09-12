@@ -87,7 +87,7 @@ function authentication_basic_setup(extra)
     ["SHIKHAR_MOBILE_TEST_AUTHENTICATION_ENTID"] = idmap,
     ["SHIKHAR_MOBILE_TEST_LIVE"] = "FALSE",
     ["SHIKHAR_MOBILE_TEST_EXPLAIN"] = "FALSE",
-    ["SHIKHAR_MOBILE_APIKEY"] = "NONE",
+    ["SHIKHAR_MOBILE_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -98,6 +98,9 @@ function authentication_basic_setup(extra)
 
   if env["SHIKHAR_MOBILE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["SHIKHAR_MOBILE_APIKEY"],
       },

@@ -33,6 +33,7 @@ main: kit: entity: authentication: {
       type: "`$STRING`"
     }
     {
+      format: "password"
       name: "password"
       req: true
       short: "User's password"
@@ -63,10 +64,16 @@ main: kit: entity: authentication: {
         {
           method: "POST"
           orig: "/api/auth/login"
-          parts: [
-            "api"
-            "auth"
-            "login"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "login"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -76,10 +83,16 @@ main: kit: entity: authentication: {
         {
           method: "POST"
           orig: "/api/auth/verify-mobile"
-          parts: [
-            "api"
-            "auth"
-            "verify-mobile"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "verify-mobile"
+            }
           ]
           transform: {
             req: "`reqdata`"

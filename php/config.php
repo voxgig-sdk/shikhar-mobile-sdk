@@ -84,6 +84,7 @@ class ShikharMobileConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'password',
               'name' => 'password',
               'req' => true,
               'short' => 'User\'s password',
@@ -98,6 +99,10 @@ class ShikharMobileConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'authentication',
           'op' => [
             'create' => [
@@ -109,15 +114,26 @@ class ShikharMobileConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/auth/login',
-                  'parts' => [
-                    'api',
-                    'auth',
-                    'login',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'auth',
+                    ],
+                    [
+                      'lit' => 'login',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.user`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'auth',
+                    'login',
                   ],
                 ],
                 [
@@ -125,15 +141,26 @@ class ShikharMobileConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/auth/verify-mobile',
-                  'parts' => [
-                    'api',
-                    'auth',
-                    'verify-mobile',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'auth',
+                    ],
+                    [
+                      'lit' => 'verify-mobile',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'auth',
+                    'verify-mobile',
                   ],
                 ],
               ],
