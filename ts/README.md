@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ShikharMobileSDK } from '@voxgig-sdk/shikhar-mobile'
+import { ShikharMobileSDK } from '@voxgig-sdk/shikhar-mobile-sdk'
 
 const client = new ShikharMobileSDK({
   apikey: process.env.SHIKHAR_MOBILE_APIKEY,
@@ -418,7 +418,7 @@ shikhar-mobile/
 Import the SDK from the package root:
 
 ```ts
-import { ShikharMobileSDK } from '@voxgig-sdk/shikhar-mobile'
+import { ShikharMobileSDK } from '@voxgig-sdk/shikhar-mobile-sdk'
 ```
 
 ### Entity state

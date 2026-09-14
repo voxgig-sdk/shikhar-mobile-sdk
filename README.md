@@ -107,7 +107,7 @@ local result, err = client:Authentication():create({ password = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
+| TypeScript | `@voxgig-sdk/shikhar-mobile-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
 | Python | `voxgig-sdk-shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
 | PHP | `voxgig-sdk/shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/shikhar-mobile-sdk/go` | `go get github.com/voxgig-sdk/shikhar-mobile-sdk/go@latest` |
@@ -121,7 +121,7 @@ local result, err = client:Authentication():create({ password = "example" })
 ### TypeScript
 
 ```ts
-import { ShikharMobileSDK } from '@voxgig-sdk/shikhar-mobile'
+import { ShikharMobileSDK } from '@voxgig-sdk/shikhar-mobile-sdk'
 
 const client = new ShikharMobileSDK({
   apikey: process.env.SHIKHAR_MOBILE_APIKEY,

@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/shikhar-mobile",
+  "name": "@voxgig-sdk/shikhar-mobile-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Shikhar Mobile public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
