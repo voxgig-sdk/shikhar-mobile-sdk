@@ -4,7 +4,10 @@ declare(strict_types=1);
 // ShikharMobile SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class ShikharMobileFeatures
@@ -14,8 +17,14 @@ class ShikharMobileFeatures
         switch ($name) {
             case "base":
                 return new ShikharMobileBaseFeature();
+            case "ratelimit":
+                return new ShikharMobileRatelimitFeature();
+            case "retry":
+                return new ShikharMobileRetryFeature();
             case "test":
                 return new ShikharMobileTestFeature();
+            case "timeout":
+                return new ShikharMobileTimeoutFeature();
             default:
                 return new ShikharMobileBaseFeature();
         }
@@ -31,7 +40,10 @@ class ShikharMobileFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

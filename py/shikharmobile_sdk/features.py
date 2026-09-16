@@ -1,12 +1,18 @@
 # ShikharMobile SDK feature factory
 
 from shikharmobile_sdk.feature.base_feature import ShikharMobileBaseFeature
+from shikharmobile_sdk.feature.ratelimit_feature import ShikharMobileRatelimitFeature
+from shikharmobile_sdk.feature.retry_feature import ShikharMobileRetryFeature
 from shikharmobile_sdk.feature.test_feature import ShikharMobileTestFeature
+from shikharmobile_sdk.feature.timeout_feature import ShikharMobileTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ShikharMobileBaseFeature(),
+    "ratelimit": lambda: ShikharMobileRatelimitFeature(),
+    "retry": lambda: ShikharMobileRetryFeature(),
     "test": lambda: ShikharMobileTestFeature(),
+    "timeout": lambda: ShikharMobileTimeoutFeature(),
 }
 
 
