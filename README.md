@@ -107,12 +107,12 @@ local result, err = client:Authentication():create({ password = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/shikhar-mobile-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
-| Python | `voxgig-sdk-shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
-| PHP | `voxgig-sdk/shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
+| TypeScript | `@voxgig-sdk/shikhar-mobile-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/tags) |
+| Python | `voxgig-sdk-shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/tags) |
+| PHP | `voxgig-sdk/shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/shikhar-mobile-sdk/go` | `go get github.com/voxgig-sdk/shikhar-mobile-sdk/go@latest` |
-| Ruby | `voxgig-sdk-shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
-| Lua | `voxgig-sdk-shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases) |
+| Ruby | `voxgig-sdk-shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/tags) |
+| Lua | `voxgig-sdk-shikhar-mobile` | publish pending — [install from git tag](https://github.com/voxgig-sdk/shikhar-mobile-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/shikhar-mobile-sdk/go-cli` | `go install github.com/voxgig-sdk/shikhar-mobile-sdk/go-cli/cmd/shikhar-mobile@latest` |
 | Go MCP server | `github.com/voxgig-sdk/shikhar-mobile-sdk/go-mcp` | `go get github.com/voxgig-sdk/shikhar-mobile-sdk/go-mcp@latest` |
 
