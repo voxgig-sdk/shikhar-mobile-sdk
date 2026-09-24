@@ -119,14 +119,18 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "message",
+            "title": "Message",
             "type": "`$STRING`",
           },
           {
             "name": "mobile",
+            "title": "Mobile",
+            "type": "`$STRING`",
             "op": {
               "create": {
                 "req": True,
@@ -134,25 +138,28 @@ def make_config():
               },
             },
             "short": "User's mobile number",
-            "type": "`$STRING`",
           },
           {
             "name": "name",
+            "title": "Name",
             "type": "`$STRING`",
           },
           {
-            "format": "password",
             "name": "password",
+            "title": "Password",
+            "type": "`$STRING`",
             "req": True,
             "short": "User's password",
-            "type": "`$STRING`",
+            "format": "password",
           },
           {
             "name": "success",
+            "title": "Success",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "verificationId",
+            "title": "Verification Id",
             "type": "`$STRING`",
           },
         ],
@@ -167,7 +174,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/login",
@@ -182,19 +188,20 @@ def make_config():
                     "lit": "login",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.user`",
-                },
                 "parts": [
                   "api",
                   "auth",
                   "login",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.user`",
+                },
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/verify-mobile",
@@ -209,16 +216,18 @@ def make_config():
                     "lit": "verify-mobile",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "auth",
                   "verify-mobile",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
             ],
           },

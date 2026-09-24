@@ -1,0 +1,125 @@
+# Entity: authentication
+
+main: kit: entity: authentication: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    mobile: {
+      h: "Mobile"
+      n: "mobile"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "User's mobile number"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    password: {
+      fo: "password"
+      h: "Password"
+      n: "password"
+      r: true
+      sh: "User's password"
+      t: "`$STRING`"
+    }
+    success: {
+      h: "Success"
+      n: "success"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    verificationId: {
+      h: "Verification Id"
+      n: "verificationId"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "authentication"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/auth/login"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/auth/login"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "login"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/auth/verify-mobile"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/auth/verify-mobile"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "verify-mobile"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

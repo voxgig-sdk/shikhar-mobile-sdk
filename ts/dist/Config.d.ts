@@ -79,13 +79,16 @@ declare class Config {
         authentication: {
             fields: ({
                 name: string;
+                title: string;
                 type: string;
                 op?: undefined;
                 short?: undefined;
-                format?: undefined;
                 req?: undefined;
+                format?: undefined;
             } | {
                 name: string;
+                title: string;
+                type: string;
                 op: {
                     create: {
                         req: boolean;
@@ -93,15 +96,15 @@ declare class Config {
                     };
                 };
                 short: string;
-                type: string;
-                format?: undefined;
                 req?: undefined;
+                format?: undefined;
             } | {
-                format: string;
                 name: string;
+                title: string;
+                type: string;
                 req: boolean;
                 short: string;
-                type: string;
+                format: string;
                 op?: undefined;
             })[];
             id: {
@@ -114,19 +117,20 @@ declare class Config {
                     input: string;
                     name: string;
                     points: {
-                        args: {};
                         kind: string;
                         method: string;
                         orig: string;
                         segments: {
                             lit: string;
                         }[];
-                        select: {};
+                        parts: string[];
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
                         };
-                        parts: string[];
+                        args: {};
+                        select: {};
                     }[];
                 };
             };
