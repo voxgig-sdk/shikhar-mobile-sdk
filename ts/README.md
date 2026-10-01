@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/shikhar-mobile-sdk
+npm install ./shikhar-mobile-sdk/ts
+```
 
 
 ## Tutorial: your first API call
@@ -40,6 +44,7 @@ const client = new ShikharMobileSDK({
 ```ts
 // Create — returns the created Authentication ENTITY (.data() for the record)
 const created = await client.Authentication().create({
+  mobile: 'example_mobile',
   password: 'example_password',
 })
 
@@ -52,7 +57,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const authentication = await client.Authentication().create({ password: "example" })
+  const authentication = await client.Authentication().create({ mobile: "example", password: "example" })
   console.log(authentication)
 } catch (err) {
   console.error('create failed:', err)
@@ -119,7 +124,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ShikharMobileSDK.test()
 
-const authentication = await client.Authentication().create({ password: 'example_password' })
+const authentication = await client.Authentication().create({ mobile: 'example_mobile', password: 'example_password' })
 // authentication is the entity, populated with mock response data
 // — call authentication.data() for the record itself
 console.log(authentication)
@@ -140,11 +145,11 @@ Entity instances remember their last match and data:
 const entity = client.Authentication()
 
 // First call runs the operation and stores its result
-await entity.create({ password: 'example_password' })
+await entity.create({ mobile: 'example_mobile', password: 'example_password' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -293,12 +298,12 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 | `message` |  |
 | `mobile` | User's mobile number |
-| `name` |  |
 | `password` | User's password |
 | `success` |  |
+| `token` | Authentication token |
+| `user` |  |
 | `verificationId` |  |
 
 Operations: create.
@@ -324,18 +329,19 @@ Create an instance: `const authentication = client.Authentication()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
 | `message` | `string` |  |
 | `mobile` | `string` | User's mobile number |
-| `name` | `string` |  |
 | `password` | `string` | User's password |
 | `success` | `boolean` |  |
+| `token` | `string` | Authentication token |
+| `user` | `Record<string, any>` |  |
 | `verificationId` | `string` |  |
 
 #### Example: Create
 
 ```ts
 const authentication = await client.Authentication().create({
+  mobile: 'example_mobile',
   password: 'example_password',
 })
 ```
@@ -495,7 +501,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const authentication = client.Authentication()
-await authentication.create({ password: "example" })
+await authentication.create({ mobile: "example", password: "example" })
 
 // authentication.data() now returns the authentication data from the last `create`
 // authentication.match() returns the last match criteria

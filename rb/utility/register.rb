@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 ShikharMobileUtility.registrar = ->(u) {
   u.clean = ShikharMobileUtilities::Clean
+  u.clean_add = ShikharMobileUtilities::CleanAdd
+  u.clean_explain = ShikharMobileUtilities::CleanExplain
   u.done = ShikharMobileUtilities::Done
   u.make_error = ShikharMobileUtilities::MakeError
   u.feature_add = ShikharMobileUtilities::FeatureAdd

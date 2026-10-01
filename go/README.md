@@ -54,7 +54,7 @@ func main() {
     })
 
     // Create a authentication.
-    created, err := client.Authentication(nil).Create(map[string]any{"password": "example_password"}, nil)
+    created, err := client.Authentication(nil).Create(map[string]any{"mobile": "example_mobile", "password": "example_password"}, nil)
     if err != nil {
         panic(err)
     }
@@ -69,7 +69,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-authentication, err := client.Authentication(nil).Create(map[string]any{"password": "example"}, nil)
+authentication, err := client.Authentication(nil).Create(map[string]any{"mobile": "example", "password": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -139,7 +139,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 authentication, err := client.Authentication(nil).Create(
-    map[string]any{"password": "example"}, nil,
+    map[string]any{"mobile": "example", "password": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -263,12 +263,12 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"id"` |  |
 | `"message"` |  |
 | `"mobile"` | User's mobile number |
-| `"name"` |  |
 | `"password"` | User's password |
 | `"success"` |  |
+| `"token"` | Authentication token |
+| `"user"` |  |
 | `"verificationId"` |  |
 
 Operations: Create.
@@ -294,18 +294,19 @@ Create an instance: `authentication := client.Authentication(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
 | `message` | `string` |  |
 | `mobile` | `string` | User's mobile number |
-| `name` | `string` |  |
 | `password` | `string` | User's password |
 | `success` | `bool` |  |
+| `token` | `string` | Authentication token |
+| `user` | `map[string]any` |  |
 | `verificationId` | `string` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.Authentication(nil).Create(map[string]any{
+    "mobile": "example_mobile",
     "password": "example_password",
 }, nil)
 if err != nil {
@@ -473,7 +474,7 @@ stores the returned data and match criteria internally.
 
 ```go
 authentication := client.Authentication(nil)
-authentication.Create(map[string]any{"password": "example"}, nil)
+authentication.Create(map[string]any{"mobile": "example", "password": "example"}, nil)
 
 // authentication.Data() now returns the authentication data from the last create
 // authentication.Match() returns the last match criteria

@@ -39,7 +39,6 @@ class AuthenticationEntityTest < Minitest::Test
     authentication_ref01_data_result = authentication_ref01_ent.create(authentication_ref01_data, nil)
     authentication_ref01_data = Helpers.to_map(authentication_ref01_data_result.respond_to?(:data_get) ? authentication_ref01_data_result.data_get : authentication_ref01_data_result)
     assert !authentication_ref01_data.nil?
-    assert !authentication_ref01_data["id"].nil?
 
   end
 end

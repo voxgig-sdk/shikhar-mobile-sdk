@@ -39,7 +39,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:Authentication():create({ password = "example_password" })
+local created, err = client:Authentication():create({ mobile = "example_mobile", password = "example_password" })
 if err then error(err) end
 
 ```
@@ -51,7 +51,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local authentication, err = client:Authentication():create({ password = "example" })
+local authentication, err = client:Authentication():create({ mobile = "example", password = "example" })
 if err then error(err) end
 ```
 
@@ -109,7 +109,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Authentication():create({ password = "example" })
+local result, err = client:Authentication():create({ mobile = "example", password = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -230,12 +230,12 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 | `message` |  |
 | `mobile` | User's mobile number |
-| `name` |  |
 | `password` | User's password |
 | `success` |  |
+| `token` | Authentication token |
+| `user` |  |
 | `verificationId` |  |
 
 Operations: Create.
@@ -261,18 +261,19 @@ Create an instance: `local authentication = client:Authentication(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
 | `message` | `string` |  |
 | `mobile` | `string` | User's mobile number |
-| `name` | `string` |  |
 | `password` | `string` | User's password |
 | `success` | `boolean` |  |
+| `token` | `string` | Authentication token |
+| `user` | `table` |  |
 | `verificationId` | `string` |  |
 
 #### Example: Create
 
 ```lua
 local authentication, err = client:Authentication():create({
+  mobile = "example_mobile", -- string
   password = "example_password", -- string
 })
 ```
@@ -440,7 +441,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local authentication = client:Authentication()
-authentication:create({ password = "example" })
+authentication:create({ mobile = "example", password = "example" })
 
 -- authentication:data_get() now returns the authentication data from the last create
 -- authentication:match_get() returns the last match criteria

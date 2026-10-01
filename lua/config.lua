@@ -89,11 +89,6 @@ local function make_config()
       ["authentication"] = {
         ["fields"] = {
           {
-            ["name"] = "id",
-            ["title"] = "Id",
-            ["type"] = "`$STRING`",
-          },
-          {
             ["name"] = "message",
             ["title"] = "Message",
             ["type"] = "`$STRING`",
@@ -102,18 +97,8 @@ local function make_config()
             ["name"] = "mobile",
             ["title"] = "Mobile",
             ["type"] = "`$STRING`",
-            ["op"] = {
-              ["create"] = {
-                ["req"] = true,
-                ["type"] = "`$STRING`",
-              },
-            },
+            ["req"] = true,
             ["short"] = "User's mobile number",
-          },
-          {
-            ["name"] = "name",
-            ["title"] = "Name",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "password",
@@ -129,14 +114,21 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["name"] = "token",
+            ["title"] = "Token",
+            ["type"] = "`$STRING`",
+            ["short"] = "Authentication token",
+          },
+          {
+            ["name"] = "user",
+            ["title"] = "User",
+            ["type"] = "`$OBJECT`",
+          },
+          {
             ["name"] = "verificationId",
             ["title"] = "Verification Id",
             ["type"] = "`$STRING`",
           },
-        },
-        ["id"] = {
-          ["field"] = "id",
-          ["name"] = "id",
         },
         ["name"] = "authentication",
         ["op"] = {
@@ -167,7 +159,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.user`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {},
                 ["select"] = {},

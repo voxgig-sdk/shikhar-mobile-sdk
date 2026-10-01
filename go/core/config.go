@@ -93,11 +93,6 @@ func MakeConfig() map[string]any {
 			"authentication": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$STRING`",
-					},
-					map[string]any{
 						"name": "message",
 						"title": "Message",
 						"type": "`$STRING`",
@@ -106,18 +101,8 @@ func MakeConfig() map[string]any {
 						"name": "mobile",
 						"title": "Mobile",
 						"type": "`$STRING`",
-						"op": map[string]any{
-							"create": map[string]any{
-								"req": true,
-								"type": "`$STRING`",
-							},
-						},
+						"req": true,
 						"short": "User's mobile number",
-					},
-					map[string]any{
-						"name": "name",
-						"title": "Name",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "password",
@@ -133,14 +118,21 @@ func MakeConfig() map[string]any {
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
+						"name": "token",
+						"title": "Token",
+						"type": "`$STRING`",
+						"short": "Authentication token",
+					},
+					map[string]any{
+						"name": "user",
+						"title": "User",
+						"type": "`$OBJECT`",
+					},
+					map[string]any{
 						"name": "verificationId",
 						"title": "Verification Id",
 						"type": "`$STRING`",
 					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
 				},
 				"name": "authentication",
 				"op": map[string]any{
@@ -171,7 +163,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.user`",
+									"res": "`body`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},

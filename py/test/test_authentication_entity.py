@@ -46,7 +46,6 @@ class TestAuthenticationEntity:
 
         authentication_ref01_data = helpers.to_map(runner.entity_data(authentication_ref01_ent.create(authentication_ref01_data, None)))
         assert authentication_ref01_data is not None
-        assert authentication_ref01_data["id"] is not None
 
 
 

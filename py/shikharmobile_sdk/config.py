@@ -118,11 +118,6 @@ def make_config():
       "authentication": {
         "fields": [
           {
-            "name": "id",
-            "title": "Id",
-            "type": "`$STRING`",
-          },
-          {
             "name": "message",
             "title": "Message",
             "type": "`$STRING`",
@@ -131,18 +126,8 @@ def make_config():
             "name": "mobile",
             "title": "Mobile",
             "type": "`$STRING`",
-            "op": {
-              "create": {
-                "req": True,
-                "type": "`$STRING`",
-              },
-            },
+            "req": True,
             "short": "User's mobile number",
-          },
-          {
-            "name": "name",
-            "title": "Name",
-            "type": "`$STRING`",
           },
           {
             "name": "password",
@@ -158,15 +143,22 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "name": "token",
+            "title": "Token",
+            "type": "`$STRING`",
+            "short": "Authentication token",
+          },
+          {
+            "name": "user",
+            "title": "User",
+            "type": "`$OBJECT`",
+          },
+          {
             "name": "verificationId",
             "title": "Verification Id",
             "type": "`$STRING`",
           },
         ],
-        "id": {
-          "field": "id",
-          "name": "id",
-        },
         "name": "authentication",
         "op": {
           "create": {
@@ -196,7 +188,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body.user`",
+                  "res": "`body`",
                 },
                 "args": {},
                 "select": {},

@@ -43,7 +43,7 @@ client = ShikharMobileSDK({
 
 ```python
 # Create — returns the ENTITY (call data_get() for the record)
-created = client.Authentication().create({"password": "example_password"})
+created = client.Authentication().create({"mobile": "example_mobile", "password": "example_password"})
 
 ```
 
@@ -54,7 +54,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    authentication = client.Authentication().create({ "password": "example" })
+    authentication = client.Authentication().create({ "mobile": "example", "password": "example" })
     print(authentication)
 except Exception as err:
     print(f"create failed: {err}")
@@ -123,7 +123,7 @@ client = ShikharMobileSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-authentication = client.Authentication().create({"password": "example"})
+authentication = client.Authentication().create({"mobile": "example", "password": "example"})
 # authentication contains the mock response record
 ```
 
@@ -242,12 +242,12 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 | `message` |  |
 | `mobile` | User's mobile number |
-| `name` |  |
 | `password` | User's password |
 | `success` |  |
+| `token` | Authentication token |
+| `user` |  |
 | `verificationId` |  |
 
 Operations: Create.
@@ -273,18 +273,19 @@ Create an instance: `authentication = client.Authentication()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `str` |  |
 | `message` | `str` |  |
 | `mobile` | `str` | User's mobile number |
-| `name` | `str` |  |
 | `password` | `str` | User's password |
 | `success` | `bool` |  |
+| `token` | `str` | Authentication token |
+| `user` | `dict` |  |
 | `verificationId` | `str` |  |
 
 #### Example: Create
 
 ```python
 authentication = client.Authentication().create({
+    "mobile": "example_mobile",  # str
     "password": "example_password",  # str
 })
 ```
@@ -451,7 +452,7 @@ stores the returned data and match criteria internally.
 
 ```python
 authentication = client.Authentication()
-authentication.create({ "password": "example" })
+authentication.create({ "mobile": "example", "password": "example" })
 
 # authentication.data_get() now returns the authentication data from the last create
 # authentication.match_get() returns the last match criteria

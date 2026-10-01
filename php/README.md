@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/shikhar-mobile-sdk
+composer config repositories.shikhar-mobile-sdk path ./shikhar-mobile-sdk/php
+composer require voxgig-sdk/shikhar-mobile-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
@@ -37,7 +42,7 @@ $client = new ShikharMobileSDK([
 
 ```php
 // create() returns the ENTITY — call data_get() for the created Authentication record.
-$created = $client->Authentication()->create(["password" => "example_password"]);
+$created = $client->Authentication()->create(["mobile" => "example_mobile", "password" => "example_password"]);
 
 ```
 
@@ -49,7 +54,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $authentication = $client->Authentication()->create(["password" => "example"]);
+    $authentication = $client->Authentication()->create(["mobile" => "example", "password" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -123,7 +128,7 @@ $client = ShikharMobileSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$authentication = $client->Authentication()->create(["password" => "example"]);
+$authentication = $client->Authentication()->create(["mobile" => "example", "password" => "example"]);
 print_r($authentication->data_get());
 ```
 
@@ -245,12 +250,12 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 | `message` |  |
 | `mobile` | User's mobile number |
-| `name` |  |
 | `password` | User's password |
 | `success` |  |
+| `token` | Authentication token |
+| `user` |  |
 | `verificationId` |  |
 
 Operations: Create.
@@ -276,18 +281,19 @@ Create an instance: `$authentication = $client->Authentication();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `string` |  |
 | `message` | `string` |  |
 | `mobile` | `string` | User's mobile number |
-| `name` | `string` |  |
 | `password` | `string` | User's password |
 | `success` | `bool` |  |
+| `token` | `string` | Authentication token |
+| `user` | `array` |  |
 | `verificationId` | `string` |  |
 
 #### Example: Create
 
 ```php
 $authentication = $client->Authentication()->create([
+    "mobile" => null, // string
     "password" => null, // string
 ]);
 ```
@@ -455,7 +461,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $authentication = $client->Authentication();
-$authentication->create(["password" => "example"]);
+$authentication->create(["mobile" => "example", "password" => "example"]);
 
 // $authentication->data_get() now returns the authentication data from the last create
 // $authentication->match_get() returns the last match criteria

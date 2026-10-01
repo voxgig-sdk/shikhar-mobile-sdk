@@ -93,25 +93,13 @@ $authentication = $client->Authentication();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `mobile` | `string` | No | User's mobile number |
-| `name` | `string` | No |  |
+| `mobile` | `string` | Yes | User's mobile number |
 | `password` | `string` | Yes | User's password |
 | `success` | `bool` | No |  |
+| `token` | `string` | No | Authentication token |
+| `user` | `array` | No |  |
 | `verificationId` | `string` | No |  |
-
-### Field Usage by Operation
-
-| Field | create |
-| --- | --- |
-| `id` | - |
-| `message` | - |
-| `mobile` | Yes |
-| `name` | - |
-| `password` | - |
-| `success` | - |
-| `verificationId` | - |
 
 ### Operations
 
@@ -121,6 +109,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Authentication()->create([
+  "mobile" => null, // string
   "password" => null, // string
 ]);
 ```

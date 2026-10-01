@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 ShikharMobileUtility::setRegistrar(function (ShikharMobileUtility $u): void {
     $u->clean = [ShikharMobileClean::class, 'call'];
+    $u->clean_add = [ShikharMobileClean::class, 'add'];
+    $u->clean_explain = [ShikharMobileDone::class, 'clean_explain'];
     $u->done = [ShikharMobileDone::class, 'call'];
     $u->make_error = [ShikharMobileMakeError::class, 'call'];
     $u->feature_add = [ShikharMobileFeatureAdd::class, 'call'];

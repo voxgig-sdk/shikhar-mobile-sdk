@@ -6,22 +6,22 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Authentication {
-  id?: string
   message?: string
-  mobile?: string
-  name?: string
+  mobile: string
   password: string
   success?: boolean
+  token?: string
+  user?: Record<string, any>
   verificationId?: string
 }
 
 export interface AuthenticationCreateData {
-  id?: string
   message?: string
-  mobile?: string
-  name?: string
+  mobile: string
   password: string
   success?: boolean
+  token?: string
+  user?: Record<string, any>
   verificationId?: string
 }
 

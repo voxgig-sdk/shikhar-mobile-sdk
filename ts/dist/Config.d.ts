@@ -81,22 +81,15 @@ declare class Config {
                 name: string;
                 title: string;
                 type: string;
-                op?: undefined;
-                short?: undefined;
                 req?: undefined;
+                short?: undefined;
                 format?: undefined;
             } | {
                 name: string;
                 title: string;
                 type: string;
-                op: {
-                    create: {
-                        req: boolean;
-                        type: string;
-                    };
-                };
+                req: boolean;
                 short: string;
-                req?: undefined;
                 format?: undefined;
             } | {
                 name: string;
@@ -105,12 +98,14 @@ declare class Config {
                 req: boolean;
                 short: string;
                 format: string;
-                op?: undefined;
-            })[];
-            id: {
-                field: string;
+            } | {
                 name: string;
-            };
+                title: string;
+                type: string;
+                short: string;
+                req?: undefined;
+                format?: undefined;
+            })[];
             name: string;
             op: {
                 create: {

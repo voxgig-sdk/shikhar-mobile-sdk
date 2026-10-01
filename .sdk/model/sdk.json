@@ -97,13 +97,6 @@
             "field": {}
           },
           "fields": {
-            "id": {
-              "a": true,
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "t": "`$STRING`"
-            },
             "message": {
               "a": true,
               "h": "Message",
@@ -115,21 +108,8 @@
               "a": true,
               "h": "Mobile",
               "n": "mobile",
-              "op": {
-                "create": {
-                  "req": true,
-                  "type": "`$STRING`"
-                }
-              },
-              "r": false,
+              "r": true,
               "sh": "User's mobile number",
-              "t": "`$STRING`"
-            },
-            "name": {
-              "a": true,
-              "h": "Name",
-              "n": "name",
-              "r": false,
               "t": "`$STRING`"
             },
             "password": {
@@ -148,6 +128,21 @@
               "r": false,
               "t": "`$BOOLEAN`"
             },
+            "token": {
+              "a": true,
+              "h": "Token",
+              "n": "token",
+              "r": false,
+              "sh": "Authentication token",
+              "t": "`$STRING`"
+            },
+            "user": {
+              "a": true,
+              "h": "User",
+              "n": "user",
+              "r": false,
+              "t": "`$OBJECT`"
+            },
             "verificationId": {
               "a": true,
               "h": "Verification Id",
@@ -155,10 +150,6 @@
               "r": false,
               "t": "`$STRING`"
             }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
           },
           "name": "authentication",
           "op": {
@@ -192,7 +183,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.user`"
+                    "res": "`body`"
                   }
                 },
                 {
@@ -704,7 +695,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

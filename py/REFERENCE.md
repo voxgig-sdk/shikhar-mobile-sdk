@@ -88,25 +88,13 @@ authentication = client.Authentication()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `str` | No |  |
 | `message` | `str` | No |  |
-| `mobile` | `str` | No | User's mobile number |
-| `name` | `str` | No |  |
+| `mobile` | `str` | Yes | User's mobile number |
 | `password` | `str` | Yes | User's password |
 | `success` | `bool` | No |  |
+| `token` | `str` | No | Authentication token |
+| `user` | `dict` | No |  |
 | `verificationId` | `str` | No |  |
-
-### Field Usage by Operation
-
-| Field | create |
-| --- | --- |
-| `id` | - |
-| `message` | - |
-| `mobile` | Yes |
-| `name` | - |
-| `password` | - |
-| `success` | - |
-| `verificationId` | - |
 
 ### Operations
 
@@ -116,6 +104,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Authentication().create({
+    "mobile": "example_mobile",  # str
     "password": "example_password",  # str
 })
 ```

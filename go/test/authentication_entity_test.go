@@ -62,9 +62,6 @@ func TestAuthenticationEntity(t *testing.T) {
 		if authenticationRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
-		if authenticationRef01Data["id"] == nil {
-			t.Fatal("expected created entity to have an id")
-		}
 
 	})
 }

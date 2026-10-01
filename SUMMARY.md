@@ -22,6 +22,7 @@ Key fields to recognise:
 
 - `mobile`: User&#39;s mobile number
 - `password`: User&#39;s password
+- `token`: Authentication token
 
 ### Route map
 

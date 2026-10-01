@@ -109,11 +109,6 @@ class Config {
         "authentication": {
             "fields": [
                 {
-                    "name": "id",
-                    "title": "Id",
-                    "type": "`$STRING`"
-                },
-                {
                     "name": "message",
                     "title": "Message",
                     "type": "`$STRING`"
@@ -122,18 +117,8 @@ class Config {
                     "name": "mobile",
                     "title": "Mobile",
                     "type": "`$STRING`",
-                    "op": {
-                        "create": {
-                            "req": true,
-                            "type": "`$STRING`"
-                        }
-                    },
+                    "req": true,
                     "short": "User's mobile number"
-                },
-                {
-                    "name": "name",
-                    "title": "Name",
-                    "type": "`$STRING`"
                 },
                 {
                     "name": "password",
@@ -149,15 +134,22 @@ class Config {
                     "type": "`$BOOLEAN`"
                 },
                 {
+                    "name": "token",
+                    "title": "Token",
+                    "type": "`$STRING`",
+                    "short": "Authentication token"
+                },
+                {
+                    "name": "user",
+                    "title": "User",
+                    "type": "`$OBJECT`"
+                },
+                {
                     "name": "verificationId",
                     "title": "Verification Id",
                     "type": "`$STRING`"
                 }
             ],
-            "id": {
-                "field": "id",
-                "name": "id"
-            },
             "name": "authentication",
             "op": {
                 "create": {
@@ -187,7 +179,7 @@ class Config {
                             "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body.user`"
+                                "res": "`body`"
                             },
                             "args": {},
                             "select": {}

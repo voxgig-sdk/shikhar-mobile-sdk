@@ -7,21 +7,21 @@
 -- edit by hand.
 
 ---@class Authentication
----@field id? string
 ---@field message? string
----@field mobile? string
----@field name? string
+---@field mobile string
 ---@field password string
 ---@field success? boolean
+---@field token? string
+---@field user? table
 ---@field verificationId? string
 
 ---@class AuthenticationCreateData
----@field id? string
 ---@field message? string
----@field mobile? string
----@field name? string
+---@field mobile string
 ---@field password string
 ---@field success? boolean
+---@field token? string
+---@field user? table
 ---@field verificationId? string
 
 local M = {}

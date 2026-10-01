@@ -2,42 +2,46 @@
   "existing": {
     "authentication": {
       "AUTHENTICATION00": {
-        "id": "AUTHENTICATION00",
-        "message": "s47",
-        "mobile": "s48",
-        "name": "s49",
-        "password": "s4a",
+        "message": "s46",
+        "mobile": "s47",
+        "password": "s48",
         "success": false,
-        "verificationId": "s4c"
+        "token": "s4a",
+        "user": {},
+        "verificationId": "s4c",
+        "id": "AUTHENTICATION00"
       },
       "AUTHENTICATION01": {
-        "id": "AUTHENTICATION01",
-        "message": "s8d",
-        "mobile": "s8e",
-        "name": "s8f",
-        "password": "s90",
+        "message": "s8c",
+        "mobile": "s8d",
+        "password": "s8e",
         "success": false,
-        "verificationId": "s92"
+        "token": "s90",
+        "user": {},
+        "verificationId": "s92",
+        "id": "AUTHENTICATION01"
       },
       "AUTHENTICATION02": {
-        "id": "AUTHENTICATION02",
-        "message": "sd3",
-        "mobile": "sd4",
-        "name": "sd5",
-        "password": "sd6",
+        "message": "sd2",
+        "mobile": "sd3",
+        "password": "sd4",
         "success": false,
-        "verificationId": "sd8"
+        "token": "sd6",
+        "user": {},
+        "verificationId": "sd8",
+        "id": "AUTHENTICATION02"
       }
     }
   },
   "new": {
     "authentication": {
       "authentication_ref01": {
-        "message": "s119",
-        "mobile": "s11a",
-        "name": "s11b",
-        "password": "s11c",
+        "message": "s118",
+        "mobile": "s119",
+        "password": "s11a",
         "success": false,
+        "token": "s11c",
+        "user": {},
         "verificationId": "s11e"
       }
     }

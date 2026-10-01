@@ -17,26 +17,26 @@ from typing import TypedDict, Any
 
 
 class AuthenticationRequired(TypedDict):
+    mobile: str
     password: str
 
 
 class Authentication(AuthenticationRequired, total=False):
-    id: str
     message: str
-    mobile: str
-    name: str
     success: bool
+    token: str
+    user: dict
     verificationId: str
 
 
 class AuthenticationCreateDataRequired(TypedDict):
+    mobile: str
     password: str
 
 
 class AuthenticationCreateData(AuthenticationCreateDataRequired, total=False):
-    id: str
     message: str
-    mobile: str
-    name: str
     success: bool
+    token: str
+    user: dict
     verificationId: str

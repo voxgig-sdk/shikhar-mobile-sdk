@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases](https://github.com/voxgig-sdk/shikhar-mobile-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/shikhar-mobile-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-shikhar-mobile-sdk", path: "./shikhar-mobile-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -36,7 +45,7 @@ client = ShikharMobileSDK.new({
 
 ```ruby
 # create returns the ENTITY — call data_get for the created Authentication record.
-created = client.Authentication.create({ "password" => "example_password" })
+created = client.Authentication.create({ "mobile" => "example_mobile", "password" => "example_password" })
 
 ```
 
@@ -47,7 +56,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  authentication = client.Authentication.create({ "password" => "example" })
+  authentication = client.Authentication.create({ "mobile" => "example", "password" => "example" })
 rescue => err
   warn "create failed: #{err}"
 end
@@ -117,7 +126,7 @@ client = ShikharMobileSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-authentication = client.Authentication.create({ "password" => "example" })
+authentication = client.Authentication.create({ "mobile" => "example", "password" => "example" })
 puts authentication
 ```
 
@@ -235,12 +244,12 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 | `message` |  |
 | `mobile` | User's mobile number |
-| `name` |  |
 | `password` | User's password |
 | `success` |  |
+| `token` | Authentication token |
+| `user` |  |
 | `verificationId` |  |
 
 Operations: Create.
@@ -266,18 +275,19 @@ Create an instance: `authentication = client.Authentication`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `String` |  |
 | `message` | `String` |  |
 | `mobile` | `String` | User's mobile number |
-| `name` | `String` |  |
 | `password` | `String` | User's password |
 | `success` | `Boolean` |  |
+| `token` | `String` | Authentication token |
+| `user` | `Hash` |  |
 | `verificationId` | `String` |  |
 
 #### Example: Create
 
 ```ruby
 authentication = client.Authentication.create({
+  "mobile" => "example_mobile", # String
   "password" => "example_password", # String
 })
 ```
@@ -445,7 +455,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 authentication = client.Authentication
-authentication.create({ "password" => "example" })
+authentication.create({ "mobile" => "example", "password" => "example" })
 
 # authentication.data_get now returns the authentication data from the last create
 # authentication.match_get returns the last match criteria
