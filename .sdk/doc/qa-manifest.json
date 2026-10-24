@@ -3,5 +3,17 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Authentication token",
+      "JWT token obtained from login endpoint",
+      "Production server",
+      "Successful login",
+      "This API enables users to interact with the Shikhar mobile application, allowing actions such as user login, mobile number verification, and other app-related functionalities. It&#39;s designed to facilitate seamless communication between the mobile client and the server.",
+      "User&#39;s mobile number",
+      "User&#39;s password",
+      "Verification code sent successfully"
+    ]
+  }
 }

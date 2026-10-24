@@ -59,6 +59,10 @@ main: kit: entity: authentication: {
       name: "create"
       points: [
         {
+          bf: [
+            "mobile"
+            "password"
+          ]
           co: {
             id: "POST /api/auth/login"
             source: "openapi3"
@@ -66,6 +70,10 @@ main: kit: entity: authentication: {
           }
           m: "POST"
           o: "/api/auth/login"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -83,6 +91,9 @@ main: kit: entity: authentication: {
           }
         }
         {
+          bf: [
+            "mobile"
+          ]
           co: {
             id: "POST /api/auth/verify-mobile"
             source: "openapi3"
@@ -90,6 +101,10 @@ main: kit: entity: authentication: {
           }
           m: "POST"
           o: "/api/auth/verify-mobile"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

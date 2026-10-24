@@ -16,12 +16,7 @@ export interface Authentication {
 }
 
 export interface AuthenticationCreateData {
-  message?: string
   mobile: string
   password: string
-  success?: boolean
-  token?: string
-  user?: Record<string, any>
-  verificationId?: string
 }
 

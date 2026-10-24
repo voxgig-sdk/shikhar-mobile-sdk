@@ -27,12 +27,7 @@ class Authentication
 /** Request payload for Authentication#create. */
 class AuthenticationCreateData
 {
-    public ?string $message = null;
     public string $mobile;
     public string $password;
-    public ?bool $success = null;
-    public ?string $token = null;
-    public ?array $user = null;
-    public ?string $verificationId = null;
 }
 

@@ -1,0 +1,11 @@
+{
+  point: "warning"
+  note: "Points POST /api/auth/login and POST /api/auth/verify-mobile on entity=authentication op=create have the same selector (exist: none), so only POST /api/auth/login is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "authentication"
+  op: "create"
+  points: [
+    "POST /api/auth/login"
+    "POST /api/auth/verify-mobile"
+  ]
+
+}

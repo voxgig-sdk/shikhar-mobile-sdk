@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { ShikharMobileSDK, BaseFeature, stdutil } from '../../..'
+import { ShikharMobileSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('AuthenticationEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = ShikharMobileSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Authentication().create({"mobile":1,"password":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.SHIKHAR_MOBILE_TEST_LIVE
@@ -51,7 +63,7 @@ describe('AuthenticationEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"message":{"a":true,"h":"Message","n":"message","r":false,"t":"`$STRING`","key$":"message","index$":0},"mobile":{"a":true,"h":"Mobile","n":"mobile","r":true,"sh":"User's mobile number","t":"`$STRING`","key$":"mobile","index$":1},"password":{"a":true,"fo":"password","h":"Password","n":"password","r":true,"sh":"User's password","t":"`$STRING`","key$":"password","index$":2},"success":{"a":true,"h":"Success","n":"success","r":false,"t":"`$BOOLEAN`","key$":"success","index$":3},"token":{"a":true,"h":"Token","n":"token","r":false,"sh":"Authentication token","t":"`$STRING`","key$":"token","index$":4},"user":{"a":true,"h":"User","n":"user","r":false,"t":"`$OBJECT`","key$":"user","index$":5},"verificationId":{"a":true,"h":"Verification Id","n":"verificationId","r":false,"t":"`$STRING`","key$":"verificationId","index$":6}},"name":"authentication","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /api/auth/login","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/auth/login","q":{},"r":{},"s":[{"lit":"api"},{"lit":"auth"},{"lit":"login"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"POST /api/auth/verify-mobile","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/auth/verify-mobile","q":{},"r":{},"s":[{"lit":"api"},{"lit":"auth"},{"lit":"verify-mobile"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"authentication","name__orig":"authentication","Name":"Authentication","name_":"authentication","name-":"authentication","NAME":"AUTHENTICATION","index$":0}, {"active":true,"entity":"authentication","key$":"BasicAuthenticationFlow","kind":"basic","name":"BasicAuthenticationFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"authentication_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'Authentication', {"POST /api/auth/login":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["mobile","password"],"properties":{"mobile":{"type":"string","description":"User's mobile number","example":"+911234567890","key$":"mobile"},"password":{"type":"string","format":"password","description":"User's password","example":"SecurePassword123","key$":"password"}},"index$":1}}}},"parameters":[]},"POST /api/auth/verify-mobile":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["mobile"],"properties":{"mobile":{"type":"string","description":"Mobile number to verify","example":"+911234567890","key$":"mobile"}},"index$":1}}}},"parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"message":{"a":true,"h":"Message","n":"message","r":false,"t":"`$STRING`","key$":"message","index$":0},"mobile":{"a":true,"h":"Mobile","n":"mobile","r":true,"sh":"User's mobile number","t":"`$STRING`","key$":"mobile","index$":1},"password":{"a":true,"fo":"password","h":"Password","n":"password","r":true,"sh":"User's password","t":"`$STRING`","key$":"password","index$":2},"success":{"a":true,"h":"Success","n":"success","r":false,"t":"`$BOOLEAN`","key$":"success","index$":3},"token":{"a":true,"h":"Token","n":"token","r":false,"sh":"Authentication token","t":"`$STRING`","key$":"token","index$":4},"user":{"a":true,"h":"User","n":"user","r":false,"t":"`$OBJECT`","key$":"user","index$":5},"verificationId":{"a":true,"h":"Verification Id","n":"verificationId","r":false,"t":"`$STRING`","key$":"verificationId","index$":6}},"name":"authentication","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["mobile","password"],"co":{"id":"POST /api/auth/login","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/auth/login","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"auth"},{"lit":"login"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":["mobile"],"co":{"id":"POST /api/auth/verify-mobile","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/auth/verify-mobile","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"auth"},{"lit":"verify-mobile"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"authentication","name__orig":"authentication","Name":"Authentication","name_":"authentication","name-":"authentication","NAME":"AUTHENTICATION","index$":0}, {"active":true,"entity":"authentication","key$":"BasicAuthenticationFlow","kind":"basic","name":"BasicAuthenticationFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"authentication_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'Authentication', {"POST /api/auth/login":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["mobile","password"],"properties":{"mobile":{"type":"string","description":"User's mobile number","example":"+911234567890","key$":"mobile"},"password":{"type":"string","format":"password","description":"User's password","example":"SecurePassword123","key$":"password"}},"index$":1}}}},"parameters":[]},"POST /api/auth/verify-mobile":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["mobile"],"properties":{"mobile":{"type":"string","description":"Mobile number to verify","example":"+911234567890","key$":"mobile"}},"index$":1}}}},"parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +84,12 @@ describe('AuthenticationEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

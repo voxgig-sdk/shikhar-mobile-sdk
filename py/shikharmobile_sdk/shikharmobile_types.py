@@ -29,14 +29,6 @@ class Authentication(AuthenticationRequired, total=False):
     verificationId: str
 
 
-class AuthenticationCreateDataRequired(TypedDict):
+class AuthenticationCreateData(TypedDict):
     mobile: str
     password: str
-
-
-class AuthenticationCreateData(AuthenticationCreateDataRequired, total=False):
-    message: str
-    success: bool
-    token: str
-    user: dict
-    verificationId: str

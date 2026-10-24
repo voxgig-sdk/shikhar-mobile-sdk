@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // ShikharMobile SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class ShikharMobilePrepareBody
 {
     public static function call(ShikharMobileContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (ShikharMobileMedia::isRawRequest($ctx->point)) {
+                return ShikharMobileMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

@@ -43,34 +43,14 @@ Authentication = Struct.new(
 
 # Request payload for Authentication#create.
 #
-# @!attribute [rw] message
-#   @return [String, nil]
-#
 # @!attribute [rw] mobile
 #   @return [String]
 #
 # @!attribute [rw] password
 #   @return [String]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] token
-#   @return [String, nil]
-#
-# @!attribute [rw] user
-#   @return [Hash, nil]
-#
-# @!attribute [rw] verificationId
-#   @return [String, nil]
 AuthenticationCreateData = Struct.new(
-  :message,
   :mobile,
   :password,
-  :success,
-  :token,
-  :user,
-  :verificationId,
   keyword_init: true
 )
 
